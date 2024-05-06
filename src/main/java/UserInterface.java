@@ -49,4 +49,34 @@ public class UserInterface {
         }
 return searchResult;
     }
+
+    //Rediger medlem UI:
+    public void redigérMedlemUI() {
+        System.out.println("Indtast navnet på det medlem du ønsker at redigere: ");
+        String medlemsnavn = scanner.nextLine();
+
+        ArrayList<Medlemmer> searchResult = kontrol.findMedlem(medlemsnavn);
+
+        if (searchResult.isEmpty()) {
+            System.out.println("Ingen medlemmer fundet");
+            return;
+        }
+
+        Medlemmer valgtMedlem = searchResult.get(0);
+
+        System.out.println("Vælg oplysinger at redigere : ");
+        System.out.println("1) navn");
+        System.out.println("2) alder");
+        System.out.println("3) Aktivt/Passivt medlemskab");
+        System.out.println("4) Junior/Senior medlemskab");
+
+        int redigeringsvalg = scanner.nextInt();
+        System.out.println("Indtast ny værdi: ");
+        String nyVærdi = scanner.nextLine();
+
+    }
+
+
+
+
 }

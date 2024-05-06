@@ -33,4 +33,11 @@ public void setNavn(String navn) {
         this.navn = navn;
     }
 
+    public void setAktivtMedlemskab(boolean aktivtMedlemskab) {
+        this.aktivtMedlemskab = aktivtMedlemskab;
+    }
+
+    public void setJuniorMedlemskab(boolean juniorMedlemskab) {
+        this.juniorMedlemskab = juniorMedlemskab;
+    }
 }
