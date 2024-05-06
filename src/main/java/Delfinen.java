@@ -4,6 +4,12 @@ import java.util.ArrayList;
 public class Delfinen {
 
     private ArrayList<Medlemmer> medlemskollektion;
+    private FileHandler fileHandler;
+
+    public Delfinen(){
+        this.fileHandler = new FileHandler();
+        this.medlemskollektion = fileHandler.loadMedlemdsData();
+    }
 
     public ArrayList<Medlemmer> getMedlemskollektion() {
         return medlemskollektion;
@@ -59,6 +65,7 @@ public class Delfinen {
 
     public void tilføjMedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, boolean motionistSvømmer) {
         medlemskollektion.add(new Medlemmer(navn, alder, aktivtMedlemskab, juniorMedlemskab));
+        fileHandler.gemListeAfMedlemmer(medlemskollektion);
         //to do lav save funktion her.
     }
 
