@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class DelfinenMedlemmer {
 
     private ArrayList<Medlem> medlemskollektion = new ArrayList<>();
-    /*
+
     private FileHandler fileHandler;
 
     public DelfinenMedlemmer(){
@@ -12,7 +12,7 @@ public class DelfinenMedlemmer {
         this.medlemskollektion = fileHandler.loadMedlemdsData();
     }
 
-     */
+
 
     public ArrayList<Medlem> getMedlemskollektion() {
         return medlemskollektion;
@@ -68,9 +68,9 @@ public class DelfinenMedlemmer {
 
     public void tilføjMedlem(Medlem medlem) {
         medlemskollektion.add(medlem);
-        /*
+
         fileHandler.gemListeAfMedlemmer(medlemskollektion);
-         */
+
         //to do lav save funktion her.
     }
 

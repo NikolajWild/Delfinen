@@ -7,7 +7,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/*
+
 public class FileHandler {
     private final File file = new File("medlemmer.csv");
 
@@ -55,4 +55,5 @@ public class FileHandler {
     }
 }
 
- */
+
+
