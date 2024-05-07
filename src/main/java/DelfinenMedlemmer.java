@@ -74,5 +74,13 @@ public class DelfinenMedlemmer {
         //to do lav save funktion her.
     }
 
+    public ArrayList<String> listeAfMedlemmer() {
+        ArrayList<String> listeAfMedlemmer = new ArrayList<>();
+        for (int i = 0; i < medlemskollektion.size(); i++) {
+            listeAfMedlemmer.add(medlemskollektion.get(i).toString());
+        }
+        return listeAfMedlemmer;
+    }
+
 
 }

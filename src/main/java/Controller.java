@@ -23,5 +23,9 @@ public class Controller {
         instanceDelfinenMedlemmer.LocalDate();
     }
 
+    public ArrayList<String> listeAfMedlemmer() {
+        return instanceDelfinenMedlemmer.listeAfMedlemmer();
+    }
+
 
 }
