@@ -27,5 +27,10 @@ public class Controller {
         return instanceDelfinenMedlemmer.listeAfMedlemmer();
     }
 
+    public ArrayList<Medlem> redigérMedlem(String navn, int redigeringsvalg, String nyVærdi) {
+        instanceDelfinenMedlemmer.redigérMedlem(navn, redigeringsvalg, nyVærdi);
+        return instanceDelfinenMedlemmer.getMedlemskollektion();
+    }
+
 
 }

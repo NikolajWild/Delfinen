@@ -62,6 +62,7 @@ public class DelfinenMedlemmer {
 
             }
         }
+        fileHandler.gemListeAfMedlemmer(medlemskollektion);
         return medlemskollektion;
     }
 

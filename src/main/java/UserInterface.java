@@ -10,9 +10,9 @@ public class UserInterface {
             System.out.println("""
                              1) Tilføj medlem
                              2) Søg medlem
-                             2) Rediger medlemsliste
-                             3) Gem medlemsliste
-                             4) Se 
+                             3) Rediger medlemsliste
+                             4) Gem medlemsliste
+                             5) Se 
                              
                              
                     """);
@@ -56,11 +56,49 @@ public class UserInterface {
                     System.out.println("Medlem er blevet tilføjet");
                     System.out.println();
                     System.out.println(medlem);
-
+                    break;
 
                 case 2:
-                    //Hmm
+                    System.out.println("Søg efter navn: ");
+                    controller.findMedlem(scanner.nextLine());
+                    break;
 
+                case 3:
+                    System.out.println("Søg efter navn på medlem nu ønsker at redigere: ");
+                    String navnRediger = scanner.nextLine();
+                    scanner.nextLine();
+                    controller.findMedlem(navnRediger);
+                    System.out.println("Hvad ønsker du at redigere?");
+                    System.out.println("1) Redigér navn");
+                    System.out.println("2) Redigér alder");
+                    System.out.println("3) Redigér aktivt/passivt medlemskab");
+                    System.out.println("4) Redigér motionist-/konkurrencessvømmer");
+                    int redigeringsValg = scanner.nextInt();
+                    switch (redigeringsValg) {
+                        case 1:
+                            System.out.println("Angiv nyt navn: ");
+                            scanner.nextLine();
+                            String nytNavn = scanner.nextLine();
+                            controller.redigérMedlem(navnRediger, redigeringsValg, nytNavn);
+                            break;
+                        case 2:
+                            System.out.println("Angiv ny alder: ");
+                            String nyAlder = scanner.nextLine();
+                            controller.redigérMedlem(navnRediger,redigeringsValg,nyAlder);
+                            break;
+                        case 3:
+                            System.out.println("Angiv om medlem har aktivt eller passivt medlemskab: ");
+                            String nyAktivEllerPassiv = scanner.nextLine();
+                            controller.redigérMedlem(navnRediger,redigeringsValg,nyAktivEllerPassiv);
+                            break;
+                        case 4:
+                            System.out.println("Redigér om medlem er motionist eller konkurrencesvømmer:");
+                            scanner.nextLine();
+                            String nyMotionistKonkurrence = scanner.nextLine();
+                            controller.redigérMedlem(navnRediger,redigeringsValg,nyMotionistKonkurrence);
+                            break;
+                    }
+                    break;
             }
 
         }
@@ -118,6 +156,7 @@ public class UserInterface {
 return searchResult;
     }
 
+    /*
     //Rediger medlem UI:
     public void redigérMedlemUI() {
         System.out.println("Indtast navnet på det medlem du ønsker at redigere: ");
@@ -143,6 +182,8 @@ return searchResult;
         String nyVærdi = scanner.nextLine();
 
     }
+
+     */
 
 
 
