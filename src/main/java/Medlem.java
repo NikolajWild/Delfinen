@@ -1,10 +1,11 @@
-public class Medlemmer {
-private int alder;
-private String navn;
-private boolean aktivtMedlemskab;
-private boolean juniorMedlemskab = alder < 18;
+public class Medlem {
 
-Medlemmer (String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab){
+    private String navn;
+    private int alder;
+    private boolean aktivtMedlemskab;
+    private boolean juniorMedlemskab = alder < 18;
+
+Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab){
     this.alder = alder;
     this.navn = navn;
     this.aktivtMedlemskab = aktivtMedlemskab;
@@ -40,4 +41,9 @@ public void setNavn(String navn) {
     public void setJuniorMedlemskab(boolean juniorMedlemskab) {
         this.juniorMedlemskab = juniorMedlemskab;
     }
+
+    public String toString() {
+        return "Navn: "  + navn + "\n" + "Alder: " + alder + "\n" + "Aktivt medlemskab: " + aktivtMedlemskab + "\n" + "Junior medlemskab: " + juniorMedlemskab;
+    }
 }
+

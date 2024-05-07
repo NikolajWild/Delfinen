@@ -7,12 +7,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/*
 public class FileHandler {
     private final File file = new File("medlemmer.csv");
 
 
-    public ArrayList<Medlemmer> loadMedlemdsData() {
-        ArrayList<Medlemmer> medlemsData = new ArrayList();
+    public ArrayList<Medlem> loadMedlemdsData() {
+        ArrayList<Medlem> medlemsData = new ArrayList();
         Scanner sc = null;
         try {
             sc = new Scanner(file, StandardCharsets.ISO_8859_1);
@@ -20,27 +21,27 @@ public class FileHandler {
             throw new RuntimeException(e);
         }
 
-        Medlemmer medlemmerFil = null;
+        Medlem medlemFil = null;
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] attributes = line.split(",");
-            medlemmerFil = new Medlemmer(
+            medlemFil = new Medlem(
                     attributes[1],
                     (Integer.parseInt(attributes[0])),
                     (Boolean.parseBoolean(attributes[2])),
                     (Boolean.parseBoolean(attributes[3]))
             );
-            medlemsData.add(medlemmerFil);
+            medlemsData.add(medlemFil);
         }
         sc.close();
         return medlemsData;
     }
 
 
-    public void gemListeAfMedlemmer(ArrayList<Medlemmer> medlemsListe) {
+    public void gemListeAfMedlemmer(ArrayList<Medlem> medlemsListe) {
         try (
                 PrintStream saves = new PrintStream("medlemmer.csv")) {
-            for (Medlemmer medlemmer : medlemsListe) {
+            for (Medlem medlemmer : medlemsListe) {
                 String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() +","+medlemmer.getAktivtMedlemskab()+","+
                         medlemmer.getJuniorMedlemskab();
                 saves.println(medlem);
@@ -53,3 +54,5 @@ public class FileHandler {
         }
     }
 }
+
+ */

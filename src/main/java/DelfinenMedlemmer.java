@@ -1,17 +1,20 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Delfinen {
+public class DelfinenMedlemmer {
 
-    private ArrayList<Medlemmer> medlemskollektion;
+    private ArrayList<Medlem> medlemskollektion = new ArrayList<>();
+    /*
     private FileHandler fileHandler;
 
-    public Delfinen(){
+    public DelfinenMedlemmer(){
         this.fileHandler = new FileHandler();
         this.medlemskollektion = fileHandler.loadMedlemdsData();
     }
 
-    public ArrayList<Medlemmer> getMedlemskollektion() {
+     */
+
+    public ArrayList<Medlem> getMedlemskollektion() {
         return medlemskollektion;
     }
 
@@ -23,11 +26,11 @@ public class Delfinen {
     }
 
     //laver en arraylist til søgemetode
-    public ArrayList<Medlemmer> searchMatch = new ArrayList<>();
+    public ArrayList<Medlem> searchMatch = new ArrayList<>();
 
     //Søger et medlem
-    public ArrayList<Medlemmer> søgMedlem(String navn) {
-        for (Medlemmer medlem : medlemskollektion) {
+    public ArrayList<Medlem> søgMedlem(String navn) {
+        for (Medlem medlem : medlemskollektion) {
             if (medlem.getNavn().toLowerCase().contains(navn.toLowerCase())) {
                 searchMatch.add(medlem);
             }
@@ -36,8 +39,8 @@ public class Delfinen {
     }
 
     //Redigér i medlemslisten
-    public ArrayList<Medlemmer> redigérMedlem(String navn, int redigeringsvalg, String nyVærdi) {
-        for (Medlemmer medlem : medlemskollektion) {
+    public ArrayList<Medlem> redigérMedlem(String navn, int redigeringsvalg, String nyVærdi) {
+        for (Medlem medlem : medlemskollektion) {
             if (medlem.getNavn().toLowerCase().contains(navn.toLowerCase())) {
                 switch (redigeringsvalg) {
                     case 1:
@@ -63,9 +66,11 @@ public class Delfinen {
     }
 
 
-    public void tilføjMedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, boolean motionistSvømmer) {
-        medlemskollektion.add(new Medlemmer(navn, alder, aktivtMedlemskab, juniorMedlemskab));
+    public void tilføjMedlem(Medlem medlem) {
+        medlemskollektion.add(medlem);
+        /*
         fileHandler.gemListeAfMedlemmer(medlemskollektion);
+         */
         //to do lav save funktion her.
     }
 

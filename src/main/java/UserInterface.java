@@ -1,9 +1,8 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class UserInterface {
-    Controller kontrol = new Controller();
+    Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
 
     public void startProgram() {
@@ -22,7 +21,43 @@ public class UserInterface {
 
             switch (input) {
                 case 1:
-                    tilføjMedlem();
+                    System.out.println("Angiv navn på medlem: ");
+                    scanner.nextLine();
+                    String navn = scanner.nextLine();
+                    System.out.println("Angiv alder på medlem: ");
+                    int alder = scanner.nextInt();
+                    System.out.println("Angiv om medlem har et aktivt eller passivt medlemskab. Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
+                    scanner.nextLine();
+                    String inputAktivEllerPassiv = scanner.nextLine();
+                    boolean aktivtMedlemskab = false;
+                    if (inputAktivEllerPassiv.toLowerCase().contains("aktiv")) {
+                        aktivtMedlemskab = true;
+                    }
+                    boolean juniorMedlemskab = alder < 18;
+                    System.out.println("Angiv om medlem er konkurrencesvømmer eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
+                    String inputKonkurrenceEllerMotionist = scanner.nextLine();
+                    boolean konkurrenceSvømmer = false;
+                    if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
+                        konkurrenceSvømmer = true;
+                    }
+
+                    Medlem medlem;
+
+                    if (konkurrenceSvømmer) {
+                        System.out.println("Angiv medlems træner: ");
+                        String træner = scanner.nextLine();
+                        String hold = alder < 18 ? "Ungdomshold" : "Seniorhold";
+                        ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+                        medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, træner, hold, svømmedisciplingOgResultater);
+                    } else {
+                        medlem = new Medlem(navn, alder, aktivtMedlemskab,juniorMedlemskab);
+                    }
+                    controller.tilføjMedlem(medlem);
+                    System.out.println("Medlem er blevet tilføjet");
+                    System.out.println();
+                    System.out.println(medlem);
+
+
                 case 2:
 
             }
@@ -31,8 +66,9 @@ public class UserInterface {
     }
 
     public void dagiMåned() {
-        kontrol.getMåned();
+        controller.getMåned();
     }
+    /*
     public void tilføjMedlem(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Indsæt medlemmets navn");
@@ -54,25 +90,27 @@ public class UserInterface {
         if (scanner.next().equalsIgnoreCase("ja")) {
             motionistSvømmer = true;
         }
-        kontrol.tilføjMedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, motionistSvømmer);
+        controller.tilføjMedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, motionistSvømmer);
         System.out.println("Medlemmet er registreret!");
     }
+
+     */
 
 
 
     //finder et medlem via. Navn
-    public ArrayList<Medlemmer> søgPåMedlem() {
-        kontrol.getInstanceDelfinen().searchMatch.clear();
+    public ArrayList<Medlem> søgPåMedlem() {
+        controller.getInstanceDelfinen().searchMatch.clear();
 
         Scanner input = new Scanner(System.in);
         System.out.println("Søg på medlem");
         String stringtosearchfor = input.nextLine();
-        ArrayList<Medlemmer> searchResult = kontrol.findMedlem(stringtosearchfor);
+        ArrayList<Medlem> searchResult = controller.findMedlem(stringtosearchfor);
         if (searchResult.size() <= 0) {
             System.out.println("Der blev ikke fundet et medlem med det navn.");
         } else {
             int count = 1;
-            for (Medlemmer medlem : searchResult) {
+            for (Medlem medlem : searchResult) {
                 System.out.println(count++ + ". " + medlem.toString()); //skal lave en toString
             }
         }
@@ -84,14 +122,14 @@ return searchResult;
         System.out.println("Indtast navnet på det medlem du ønsker at redigere: ");
         String medlemsnavn = scanner.nextLine();
 
-        ArrayList<Medlemmer> searchResult = kontrol.findMedlem(medlemsnavn);
+        ArrayList<Medlem> searchResult = controller.findMedlem(medlemsnavn);
 
         if (searchResult.isEmpty()) {
             System.out.println("Ingen medlemmer fundet");
             return;
         }
 
-        Medlemmer valgtMedlem = searchResult.get(0);
+        Medlem valgtMedlem = searchResult.get(0);
 
         System.out.println("Vælg oplysinger at redigere : ");
         System.out.println("1) navn");

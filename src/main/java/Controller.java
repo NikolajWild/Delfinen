@@ -2,25 +2,25 @@ import java.util.ArrayList;
 
 public class Controller {
 
-    Delfinen instanceDelfinen = new Delfinen();
+    DelfinenMedlemmer instanceDelfinenMedlemmer = new DelfinenMedlemmer();
 
 
-    public void tilføjMedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, boolean motionistSvømmer) {
-        instanceDelfinen.tilføjMedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, motionistSvømmer);
+    public void tilføjMedlem(Medlem medlem) {
+        instanceDelfinenMedlemmer.tilføjMedlem(medlem);
     }
 
-    public ArrayList<Medlemmer> findMedlem(String navn) {
-        return instanceDelfinen.søgMedlem(navn);
+    public ArrayList<Medlem> findMedlem(String navn) {
+        return instanceDelfinenMedlemmer.søgMedlem(navn);
     }
 
 
-    public Delfinen getInstanceDelfinen() {
-        return instanceDelfinen;
+    public DelfinenMedlemmer getInstanceDelfinen() {
+        return instanceDelfinenMedlemmer;
     }
 
 
     public void getMåned() {
-        instanceDelfinen.LocalDate();
+        instanceDelfinenMedlemmer.LocalDate();
     }
 
 
