@@ -60,7 +60,10 @@ public class UserInterface {
 
                 case 2:
                     System.out.println("Søg efter navn: ");
-                    controller.søgMedlem(scanner.nextLine());
+                    scanner.nextLine();
+                    String navnSøg = scanner.nextLine();
+                    controller.søgMedlem(navnSøg);
+                    System.out.println(controller.instanceDelfinenMedlemmer.searchMatch.get(0));
                     break;
 
                 case 3:
@@ -69,7 +72,7 @@ public class UserInterface {
                     String navnRediger = scanner.nextLine();
                     controller.søgMedlem(navnRediger);
                     Medlem medlemRed = controller.instanceDelfinenMedlemmer.searchMatch.get(0);
-                    System.out.println(controller.instanceDelfinenMedlemmer.searchMatch.get(0));
+                    System.out.println(medlemRed);
                     System.out.println();
                     System.out.println("Hvad ønsker du at redigere?");
                     System.out.println("1) Redigér navn");
@@ -113,6 +116,9 @@ public class UserInterface {
                             }
 
                             controller.redigérMedlem(navnRediger,redigeringsValg,nyMotionistKonkurrence);
+                            System.out.println("Medlemsoplysninger er blevet opdateret");
+                            System.out.println();
+                            System.out.println(medlemRed);
                             break;
                     }
                     break;

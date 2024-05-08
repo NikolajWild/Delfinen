@@ -4,6 +4,7 @@ public class Kontingent {
     public Kontingent(DelfinenMedlemmer delfinenMedlemmer){
         this.delfinenMedlemmer = delfinenMedlemmer;
     }
+    /*
     public double beregningAfKontingent(){
         double indkomst = 0.0;
         for (Medlem medlem : delfinenMedlemmer.getMedlemskollektion()){
@@ -24,4 +25,6 @@ public class Kontingent {
             }
         }
     }
+
+     */
 }
