@@ -7,8 +7,8 @@ public class Medlem {
     private double kredit;
 
 Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab){
-    this.alder = alder;
     this.navn = navn;
+    this.alder = alder;
     this.aktivtMedlemskab = aktivtMedlemskab;
     this.juniorMedlemskab = juniorMedlemskab;
 }

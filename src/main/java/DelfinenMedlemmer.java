@@ -29,13 +29,13 @@ public class DelfinenMedlemmer {
     public ArrayList<Medlem> searchMatch = new ArrayList<>();
 
     //Søger et medlem
-    public ArrayList<Medlem> søgMedlem(String navn) {
+    public void søgMedlem(String navn) {
+        searchMatch.clear();
         for (Medlem medlem : medlemskollektion) {
             if (medlem.getNavn().toLowerCase().contains(navn.toLowerCase())) {
                 searchMatch.add(medlem);
             }
         }
-        return searchMatch;
     }
 
     //Redigér i medlemslisten
@@ -49,14 +49,15 @@ public class DelfinenMedlemmer {
                     case 2:
                         int nyAlder = Integer.parseInt(nyVærdi);
                         medlem.setAlder(nyAlder);
+                        medlem.setJuniorMedlemskab(nyAlder < 18);
                         break;
                     case 3:
                         boolean nytAktivtMedlemskab = Boolean.parseBoolean(nyVærdi);
                         medlem.setAktivtMedlemskab(nytAktivtMedlemskab);
                         break;
                     case 4:
-                        boolean nytJuniorMedlemskab = Boolean.parseBoolean(nyVærdi);
-                        medlem.setJuniorMedlemskab(nytJuniorMedlemskab);
+                        boolean nytKonkurrenceMotionistSvømmer = Boolean.parseBoolean(nyVærdi);
+                        medlem.setJuniorMedlemskab(nytKonkurrenceMotionistSvømmer);
                         break;
                 }
 
