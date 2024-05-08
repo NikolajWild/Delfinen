@@ -112,7 +112,7 @@ public class UserInterface {
                                 String træner = scanner.nextLine();
                                 String hold = medlemRed.getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
                                 ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
-                                medlem = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), træner, hold, svømmedisciplingOgResultater);
+                                medlemRed = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), træner, hold, svømmedisciplingOgResultater);
                             }
 
                             controller.redigérMedlem(navnRediger,redigeringsValg,nyMotionistKonkurrence);
