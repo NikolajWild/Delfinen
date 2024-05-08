@@ -26,8 +26,8 @@ public class FileHandler {
             String line = sc.nextLine();
             String[] attributes = line.split(",");
             medlemFil = new Medlem(
-                    attributes[1],
-                    (Integer.parseInt(attributes[0])),
+                    attributes[0],
+                    (Integer.parseInt(attributes[1])),
                     (Boolean.parseBoolean(attributes[2])),
                     (Boolean.parseBoolean(attributes[3]))
             );
