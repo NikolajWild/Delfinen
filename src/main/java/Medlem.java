@@ -4,6 +4,7 @@ public class Medlem {
     private int alder;
     private boolean aktivtMedlemskab;
     private boolean juniorMedlemskab = alder < 18;
+    private double kredit;
 
 Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab){
     this.navn = navn;
@@ -13,6 +14,9 @@ Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemska
 }
 public int getAlder(){
     return alder;
+}
+public double getKredit(){
+    return kredit;
 }
 
 public String getNavn(){
@@ -40,6 +44,9 @@ public void setNavn(String navn) {
 
     public void setJuniorMedlemskab(boolean juniorMedlemskab) {
         this.juniorMedlemskab = juniorMedlemskab;
+    }
+    public void setKredit(double kredit){
+        this.kredit = kredit;
     }
 
     public String toString() {
