@@ -86,7 +86,7 @@ public class UserInterface {
                             break;
                         case 2:
                             System.out.println("Angiv ny alder: ");
-                            scanner.nextInt();
+                            scanner.nextLine();
                             String nyAlder = scanner.nextLine();
                             controller.redigérMedlem(navnRediger,redigeringsValg,nyAlder);
                             break;
