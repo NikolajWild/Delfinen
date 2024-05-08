@@ -6,8 +6,8 @@ public class Medlem {
     private boolean juniorMedlemskab = alder < 18;
 
 Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab){
-    this.alder = alder;
     this.navn = navn;
+    this.alder = alder;
     this.aktivtMedlemskab = aktivtMedlemskab;
     this.juniorMedlemskab = juniorMedlemskab;
 }

@@ -9,10 +9,10 @@ public class UserInterface {
         while (true) {
             System.out.println("""
                              1) Tilføj medlem
-                             2) Søg medlem
-                             3) Rediger medlemsliste
+                             2) Søg på medlem
+                             3) Rediger medlem
                              4) Gem medlemsliste
-                             5) Se 
+                             5) Medlemsoversigt
                              
                              
                     """);
@@ -60,14 +60,17 @@ public class UserInterface {
 
                 case 2:
                     System.out.println("Søg efter navn: ");
-                    controller.findMedlem(scanner.nextLine());
+                    controller.søgMedlem(scanner.nextLine());
                     break;
 
                 case 3:
                     System.out.println("Søg efter navn på medlem nu ønsker at redigere: ");
-                    String navnRediger = scanner.nextLine();
                     scanner.nextLine();
-                    controller.findMedlem(navnRediger);
+                    String navnRediger = scanner.nextLine();
+                    controller.søgMedlem(navnRediger);
+                    Medlem medlemRed = controller.instanceDelfinenMedlemmer.searchMatch.get(0);
+                    System.out.println(controller.instanceDelfinenMedlemmer.searchMatch.get(0));
+                    System.out.println();
                     System.out.println("Hvad ønsker du at redigere?");
                     System.out.println("1) Redigér navn");
                     System.out.println("2) Redigér alder");
@@ -83,18 +86,32 @@ public class UserInterface {
                             break;
                         case 2:
                             System.out.println("Angiv ny alder: ");
+                            scanner.nextInt();
                             String nyAlder = scanner.nextLine();
                             controller.redigérMedlem(navnRediger,redigeringsValg,nyAlder);
                             break;
                         case 3:
-                            System.out.println("Angiv om medlem har aktivt eller passivt medlemskab: ");
+                            System.out.println("Angiv om medlem har aktivt eller passivt medlemskab: Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
+                            scanner.nextLine();
                             String nyAktivEllerPassiv = scanner.nextLine();
-                            controller.redigérMedlem(navnRediger,redigeringsValg,nyAktivEllerPassiv);
+                            if (nyAktivEllerPassiv.toLowerCase().contains("aktiv")) {
+                                nyAktivEllerPassiv = "true";
+                            }
+                            controller.redigérMedlem(navnRediger,redigeringsValg, nyAktivEllerPassiv);
                             break;
                         case 4:
-                            System.out.println("Redigér om medlem er motionist eller konkurrencesvømmer:");
+                            System.out.println("Redigér om medlem er konkurrence- eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
                             scanner.nextLine();
                             String nyMotionistKonkurrence = scanner.nextLine();
+                            if (nyMotionistKonkurrence.toLowerCase().contains("konkurrence")) {
+                                nyMotionistKonkurrence = "true";
+                                System.out.println("Angiv medlems træner: ");
+                                String træner = scanner.nextLine();
+                                String hold = medlemRed.getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
+                                ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+                                medlem = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), træner, hold, svømmedisciplingOgResultater);
+                            }
+
                             controller.redigérMedlem(navnRediger,redigeringsValg,nyMotionistKonkurrence);
                             break;
                     }
@@ -138,13 +155,14 @@ public class UserInterface {
 
 
     //finder et medlem via. Navn
+    /*
     public ArrayList<Medlem> søgPåMedlem() {
         controller.getInstanceDelfinen().searchMatch.clear();
 
         Scanner input = new Scanner(System.in);
         System.out.println("Søg på medlem");
         String stringtosearchfor = input.nextLine();
-        ArrayList<Medlem> searchResult = controller.findMedlem(stringtosearchfor);
+        ArrayList<Medlem> searchResult = controller.søgMedlem(stringtosearchfor);
         if (searchResult.size() <= 0) {
             System.out.println("Der blev ikke fundet et medlem med det navn.");
         } else {
@@ -155,6 +173,8 @@ public class UserInterface {
         }
 return searchResult;
     }
+
+     */
 
     /*
     //Rediger medlem UI:

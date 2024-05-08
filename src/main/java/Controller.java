@@ -9,8 +9,8 @@ public class Controller {
         instanceDelfinenMedlemmer.tilføjMedlem(medlem);
     }
 
-    public ArrayList<Medlem> findMedlem(String navn) {
-        return instanceDelfinenMedlemmer.søgMedlem(navn);
+    public void søgMedlem(String navn) {
+        instanceDelfinenMedlemmer.søgMedlem(navn);
     }
 
 
