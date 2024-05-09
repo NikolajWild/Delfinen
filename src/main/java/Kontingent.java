@@ -4,12 +4,10 @@ public class Kontingent {
     public Kontingent(DelfinenMedlemmer delfinenMedlemmer){
         this.delfinenMedlemmer = delfinenMedlemmer;
     }
-    /*
+
     public double beregningAfKontingent(){
         double indkomst = 0.0;
         for (Medlem medlem : delfinenMedlemmer.getMedlemskollektion()){
-            public double calculateTotalExpectedIncome() {
-
                     if (medlem.getAktivtMedlemskab()) {
                         if (medlem.getAlder() < 18) {
                             indkomst += 1000;
@@ -24,7 +22,7 @@ public class Kontingent {
                 } return indkomst;
             }
         }
-    }
 
-     */
-}
+
+
+

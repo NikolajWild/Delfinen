@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Controller {
 
     DelfinenMedlemmer instanceDelfinenMedlemmer = new DelfinenMedlemmer();
-
+    Kontingent kontingent = new Kontingent(instanceDelfinenMedlemmer);
 
     public void tilføjMedlem(Medlem medlem) {
         instanceDelfinenMedlemmer.tilføjMedlem(medlem);
@@ -30,6 +30,9 @@ public class Controller {
     public ArrayList<Medlem> redigérMedlem(String navn, int redigeringsvalg, String nyVærdi) {
         instanceDelfinenMedlemmer.redigérMedlem(navn, redigeringsvalg, nyVærdi);
         return instanceDelfinenMedlemmer.getMedlemskollektion();
+    }
+    public double beregningAfKontingent(){
+       return kontingent.beregningAfKontingent();
     }
 
 

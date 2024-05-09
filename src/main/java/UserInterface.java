@@ -21,49 +21,10 @@ public class UserInterface {
 
             switch (input) {
                 case 1:
-                    System.out.println("Angiv navn på medlem: ");
-                    scanner.nextLine();
-                    String navn = scanner.nextLine();
-                    System.out.println("Angiv alder på medlem: ");
-                    int alder = scanner.nextInt();
-                    System.out.println("Angiv om medlem har et aktivt eller passivt medlemskab. Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
-                    scanner.nextLine();
-                    String inputAktivEllerPassiv = scanner.nextLine();
-                    boolean aktivtMedlemskab = false;
-                    if (inputAktivEllerPassiv.toLowerCase().contains("aktiv")) {
-                        aktivtMedlemskab = true;
-                    }
-                    boolean juniorMedlemskab = alder < 18;
-                    System.out.println("Angiv om medlem er konkurrencesvømmer eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
-                    String inputKonkurrenceEllerMotionist = scanner.nextLine();
-                    boolean konkurrenceSvømmer = false;
-                    if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
-                        konkurrenceSvømmer = true;
-                    }
-
-                    Medlem medlem;
-
-                    if (konkurrenceSvømmer) {
-                        System.out.println("Angiv medlems træner: ");
-                        String træner = scanner.nextLine();
-                        String hold = alder < 18 ? "Ungdomshold" : "Seniorhold";
-                        ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
-                        medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, træner, hold, svømmedisciplingOgResultater);
-                    } else {
-                        medlem = new Medlem(navn, alder, aktivtMedlemskab,juniorMedlemskab);
-                    }
-                    controller.tilføjMedlem(medlem);
-                    System.out.println("Medlem er blevet tilføjet");
-                    System.out.println();
-                    System.out.println(medlem);
+                    tilføjMedlem();
                     break;
-
                 case 2:
-                    System.out.println("Søg efter navn: ");
-                    scanner.nextLine();
-                    String navnSøg = scanner.nextLine();
-                    controller.søgMedlem(navnSøg);
-                    System.out.println(controller.instanceDelfinenMedlemmer.searchMatch.get(0));
+                    søgPåMedlem();
                     break;
 
                 case 3:
@@ -91,7 +52,7 @@ public class UserInterface {
                             System.out.println("Angiv ny alder: ");
                             scanner.nextLine();
                             String nyAlder = scanner.nextLine();
-                            controller.redigérMedlem(navnRediger,redigeringsValg,nyAlder);
+                            controller.redigérMedlem(navnRediger, redigeringsValg, nyAlder);
                             break;
                         case 3:
                             System.out.println("Angiv om medlem har aktivt eller passivt medlemskab: Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
@@ -100,7 +61,7 @@ public class UserInterface {
                             if (nyAktivEllerPassiv.toLowerCase().contains("aktiv")) {
                                 nyAktivEllerPassiv = "true";
                             }
-                            controller.redigérMedlem(navnRediger,redigeringsValg, nyAktivEllerPassiv);
+                            controller.redigérMedlem(navnRediger, redigeringsValg, nyAktivEllerPassiv);
                             break;
                         case 4:
                             System.out.println("Redigér om medlem er konkurrence- eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
@@ -115,49 +76,132 @@ public class UserInterface {
                                 medlemRed = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), træner, hold, svømmedisciplingOgResultater);
                             }
 
-                            controller.redigérMedlem(navnRediger,redigeringsValg,nyMotionistKonkurrence);
+                            controller.redigérMedlem(navnRediger, redigeringsValg, nyMotionistKonkurrence);
                             System.out.println("Medlemsoplysninger er blevet opdateret");
                             System.out.println();
                             System.out.println(medlemRed);
                             break;
                     }
                     break;
+                case 4:
+                    visKontingent();
+                    break;
             }
 
         }
     }
 
+    public void visKontingent() {
+        double kontingent = controller.beregningAfKontingent();
+        System.out.println(kontingent);
+    }
+
     public void dagiMåned() {
         controller.getMåned();
     }
-    /*
-    public void tilføjMedlem(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Indsæt medlemmets navn");
-        String navn = scanner.nextLine();
-        System.out.println("Tilføj medlemmets Alder");
-        int alder = scanner.nextInt();
-        System.out.println("Er medlemmet aktiv eller passiv medlem");
-        boolean aktivtMedlemskab = false;
-        if (scanner.next().equalsIgnoreCase("ja")) {
-            aktivtMedlemskab = true;
-        }
-        System.out.println("Er medlemmet senior eller junior medlem");
-        boolean juniorMedlemskab = false;
-        if (scanner.next().equalsIgnoreCase("ja")) {
-            juniorMedlemskab = true;
-        }
-        System.out.println("Er medlemmet motionist eller konkurrencesvømmer?");
-        boolean motionistSvømmer = false;
-        if (scanner.next().equalsIgnoreCase("ja")) {
-            motionistSvømmer = true;
-        }
-        controller.tilføjMedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, motionistSvømmer);
-        System.out.println("Medlemmet er registreret!");
+
+    public void søgPåMedlem() {
+        System.out.println("Søg efter navn: ");
+        scanner.nextLine();
+        String navnSøg = scanner.nextLine();
+        controller.søgMedlem(navnSøg);
+        System.out.println(controller.instanceDelfinenMedlemmer.searchMatch.get(0));
     }
 
-     */
+    public void tilføjMedlem() {
+        System.out.println("Angiv navn på medlem: ");
+        scanner.nextLine();
+        String navn = scanner.nextLine();
+        System.out.println("Angiv alder på medlem: ");
+        int alder = scanner.nextInt();
+        System.out.println("Angiv om medlem har et aktivt eller passivt medlemskab. Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
+        scanner.nextLine();
+        String inputAktivEllerPassiv = scanner.nextLine();
+        boolean aktivtMedlemskab = false;
+        if (inputAktivEllerPassiv.toLowerCase().contains("aktiv")) {
+            aktivtMedlemskab = true;
+        }
+        boolean juniorMedlemskab = alder < 18;
+        System.out.println("Angiv om medlem er konkurrencesvømmer eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
+        String inputKonkurrenceEllerMotionist = scanner.nextLine();
+        boolean konkurrenceSvømmer = false;
+        if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
+            konkurrenceSvømmer = true;
+        }
 
+        Medlem medlem;
+
+        if (konkurrenceSvømmer) {
+            System.out.println("Angiv medlems træner: ");
+            String træner = scanner.nextLine();
+            String hold = alder < 18 ? "Ungdomshold" : "Seniorhold";
+            ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+            medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, træner, hold, svømmedisciplingOgResultater);
+        } else {
+            medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab);
+        }
+        controller.tilføjMedlem(medlem);
+        System.out.println("Medlem er blevet tilføjet");
+        System.out.println();
+        System.out.println(medlem);
+
+    }
+
+  /*  public void redigerMedlem(){
+        System.out.println("Søg efter navn på medlem nu ønsker at redigere: ");
+        scanner.nextLine();
+        String navnRediger = scanner.nextLine();
+        controller.søgMedlem(navnRediger);
+        Medlem medlemRed = controller.instanceDelfinenMedlemmer.searchMatch.get(0);
+        System.out.println(medlemRed);
+        System.out.println();
+        System.out.println("Hvad ønsker du at redigere?");
+        System.out.println("1) Redigér navn");
+        System.out.println("2) Redigér alder");
+        System.out.println("3) Redigér aktivt/passivt medlemskab");
+        System.out.println("4) Redigér motionist-/konkurrencessvømmer");
+        int redigeringsValg = scanner.nextInt();
+        switch (redigeringsValg) {
+            case 1:
+                System.out.println("Angiv nyt navn: ");
+                scanner.nextLine();
+                String nytNavn = scanner.nextLine();
+                controller.redigérMedlem(navnRediger, redigeringsValg, nytNavn);
+                break;
+            case 2:
+                System.out.println("Angiv ny alder: ");
+                scanner.nextLine();
+                String nyAlder = scanner.nextLine();
+                controller.redigérMedlem(navnRediger, redigeringsValg, nyAlder);
+                break;
+            case 3:
+                System.out.println("Angiv om medlem har aktivt eller passivt medlemskab: Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
+                scanner.nextLine();
+                String nyAktivEllerPassiv = scanner.nextLine();
+                if (nyAktivEllerPassiv.toLowerCase().contains("aktiv")) {
+                    nyAktivEllerPassiv = "true";
+                }
+                controller.redigérMedlem(navnRediger, redigeringsValg, nyAktivEllerPassiv);
+                break;
+            case 4:
+                System.out.println("Redigér om medlem er konkurrence- eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
+                scanner.nextLine();
+                String nyMotionistKonkurrence = scanner.nextLine();
+                if (nyMotionistKonkurrence.toLowerCase().contains("konkurrence")) {
+                    nyMotionistKonkurrence = "true";
+                    System.out.println("Angiv medlems træner: ");
+                    String træner = scanner.nextLine();
+                    String hold = medlemRed.getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
+                    ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+                    medlemRed = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), træner, hold, svømmedisciplingOgResultater);
+                }
+
+                controller.redigérMedlem(navnRediger, redigeringsValg, nyMotionistKonkurrence);
+                System.out.println("Medlemsoplysninger er blevet opdateret");
+                System.out.println();
+                System.out.println(medlemRed);
+                break;
+    }*/
 
 
     //finder et medlem via. Navn
@@ -210,8 +254,6 @@ return searchResult;
     }
 
      */
-
-
 
 
 }
