@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Kontingent {
     private DelfinenMedlemmer delfinenMedlemmer;
 
@@ -21,7 +25,18 @@ public class Kontingent {
                     }
                 } return indkomst;
             }
+
+   /*public DelfinenMedlemmer<Medlem> medlemmerMedNegativSaldo(){
+        List <Medlem> medlemmerMedNegativSaldo = new ArrayList<>();
+        for(Medlem medlem : delfinenMedlemmer.getMedlemskollektion()){
+            if (medlem.getSaldo() <0){
+                medlemmerMedNegativSaldo.add(medlem);
+            }
         }
+        return medlemmerMedNegativSaldo;
+    }*/
+}
+
 
 
 

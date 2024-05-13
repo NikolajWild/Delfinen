@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DelfinenMedlemmer {
 
@@ -85,4 +86,25 @@ public class DelfinenMedlemmer {
     }
 
 
+    public List<Medlem> findMedlemmerIRestance() {
+        List<Medlem> medlemmerIRestance = new ArrayList<>();
+        for (Medlem medlem : medlemskollektion) {
+            double kontingent = 0.0;
+            if (medlem.getAktivtMedlemskab()) {
+                if (medlem.getAlder() < 18) {
+                    kontingent += 1000;
+                } else if (medlem.getAlder() >= 60) {
+                    kontingent += 1600 * 0.75;
+                } else {
+                    kontingent += 1600;
+                }
+            } else {
+                kontingent += 500;
+            }
+            if (medlem.getSaldo() < kontingent){
+                medlemmerIRestance.add(medlem);
+            }
+        }
+        return medlemmerIRestance;
+    }
 }
