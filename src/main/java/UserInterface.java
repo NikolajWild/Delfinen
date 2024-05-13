@@ -11,8 +11,9 @@ public class UserInterface {
                              1) Tilføj medlem
                              2) Søg på medlem
                              3) Rediger medlem
-                             4) Gem medlemsliste
-                             5) Medlemsoversigt
+                             4) Vis Kontingent
+                             5) Gem medlemsliste
+                             6) Medlemsoversigt
                              
                              
                     """);
