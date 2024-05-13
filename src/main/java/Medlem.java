@@ -5,15 +5,23 @@ public class Medlem {
     private boolean aktivtMedlemskab;
     private boolean juniorMedlemskab = alder < 18;
     private double kredit;
+    private double saldo;
 
-Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab){
+Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo){
     this.navn = navn;
     this.alder = alder;
+    this.saldo = saldo;
     this.aktivtMedlemskab = aktivtMedlemskab;
     this.juniorMedlemskab = juniorMedlemskab;
 }
 public int getAlder(){
     return alder;
+}
+public double getSaldo(){
+    return saldo;
+}
+public void setSaldo(){
+    this.saldo = saldo;
 }
 public double getKredit(){
     return kredit;
