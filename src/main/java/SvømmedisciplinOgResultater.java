@@ -1,7 +1,18 @@
 public class SvømmedisciplinOgResultater {
 
     private String svømmedisciplin;
-    private int resultat;
+    private double resultat;
+    private int år;
+    private int måned;
+    private int dag;
+
+    public SvømmedisciplinOgResultater(String svømmedisciplin, double resultat, int år, int måned, int dag) {
+        this.svømmedisciplin = svømmedisciplin;
+        this.resultat = resultat;
+        this.år = år;
+        this.måned = måned;
+        this.dag = dag;
+    }
 
 
 
@@ -16,7 +27,7 @@ public class SvømmedisciplinOgResultater {
         return svømmedisciplin;
     }
 
-    public int getResultat(){
+    public double getResultat(){
         return resultat;
     }
 

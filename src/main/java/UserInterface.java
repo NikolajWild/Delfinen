@@ -65,7 +65,7 @@ public class UserInterface {
                             controller.redigérMedlem(navnRediger, redigeringsValg, nyAktivEllerPassiv);
                             break;
                         case 4:
-                            System.out.println("Redigér om medlem er konkurrence- eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
+                            System.out.println("Angiv om medlem er konkurrence- eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
                             scanner.nextLine();
                             String nyMotionistKonkurrence = scanner.nextLine();
                             if (nyMotionistKonkurrence.toLowerCase().contains("konkurrence")) {
@@ -133,10 +133,26 @@ public class UserInterface {
         Medlem medlem;
 
         if (konkurrenceSvømmer) {
-            System.out.println("Angiv medlems træner: ");
-            String træner = scanner.nextLine();
+            String træner = alder < 18 ? "Peter Jacobsen" : "Maria Clausen";
             String hold = alder < 18 ? "Ungdomshold" : "Seniorhold";
             ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+            System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
+            String svømmedisciplin = scanner.nextLine();
+            if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")){
+                System.out.println("Angiv resultat i sekunder: ");
+                double resultat = scanner.nextDouble();
+                System.out.println("Angiv dato for resultat: ");
+                System.out.println("År: ");
+                int år = scanner.nextInt();
+                System.out.println("Måned: ");
+                int måned = scanner.nextInt();
+                System.out.println("Dag: ");
+                int dag = scanner.nextInt();
+                SvømmedisciplinOgResultater resultater = new SvømmedisciplinOgResultater(svømmedisciplin,resultat,år,måned,dag);
+                svømmedisciplingOgResultater.add(resultater);
+            } else {
+                System.out.println("Svømmedisciplin findes ikke.");
+            }
             medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, træner, hold, svømmedisciplingOgResultater);
         } else {
             medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab);
@@ -147,6 +163,7 @@ public class UserInterface {
         System.out.println(medlem);
 
     }
+}
 
   /*  public void redigerMedlem(){
         System.out.println("Søg efter navn på medlem nu ønsker at redigere: ");
@@ -255,6 +272,3 @@ return searchResult;
     }
 
      */
-
-
-}
