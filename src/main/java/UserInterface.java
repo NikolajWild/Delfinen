@@ -74,7 +74,7 @@ public class UserInterface {
                                 String træner = scanner.nextLine();
                                 String hold = medlemRed.getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
                                 ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
-                                medlemRed = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), træner, hold, svømmedisciplingOgResultater);
+                                medlemRed = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), medlemRed.getSaldo(), træner, hold, svømmedisciplingOgResultater);
                             }
 
                             controller.redigérMedlem(navnRediger, redigeringsValg, nyMotionistKonkurrence);
@@ -94,7 +94,8 @@ public class UserInterface {
 
     public void visKontingent() {
         double kontingent = controller.beregningAfKontingent();
-        System.out.println(kontingent);
+        System.out.println("Dette er den indkomst, som svømmeklubben burde tjene i år, kunder" +
+                " i restance er ikke regnet med i dette beløb" + kontingent);
     }
 
     public void dagiMåned() {
@@ -129,7 +130,8 @@ public class UserInterface {
         if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
             konkurrenceSvømmer = true;
         }
-
+        System.out.println("Indbetal penge til din konto");
+        double saldo = scanner.nextDouble();
         Medlem medlem;
 
         if (konkurrenceSvømmer) {
@@ -137,9 +139,9 @@ public class UserInterface {
             String træner = scanner.nextLine();
             String hold = alder < 18 ? "Ungdomshold" : "Seniorhold";
             ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
-            medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, træner, hold, svømmedisciplingOgResultater);
+            medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo, træner, hold, svømmedisciplingOgResultater);
         } else {
-            medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab);
+            medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         }
         controller.tilføjMedlem(medlem);
         System.out.println("Medlem er blevet tilføjet");

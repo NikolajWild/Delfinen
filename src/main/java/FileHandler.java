@@ -29,7 +29,9 @@ public class FileHandler {
                     attributes[0],
                     (Integer.parseInt(attributes[1])),
                     (Boolean.parseBoolean(attributes[2])),
-                    (Boolean.parseBoolean(attributes[3]))
+                    (Boolean.parseBoolean(attributes[3])),
+                    (Double.parseDouble(attributes[4]))
+
             );
             medlemsData.add(medlemFil);
         }
