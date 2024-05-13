@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class Konkurrencemedlem extends Medlem {
 
-    String træner;
+    String træner = getAlder() < 18 ? "Peter Jacobsen" : "Maria Clausen";
     String hold = getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
-    ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater;
+    ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater = new ArrayList<>();
 
 
 
@@ -13,6 +13,9 @@ public class Konkurrencemedlem extends Medlem {
         this.træner = træner;
         this.hold = hold;
         this.svømmedisciplinOgResultater = svømmedisciplinOgResultater;
+    }
+
+    public void tilføjSvømmedisciplinOgResultater(SvømmedisciplinOgResultater svømmedisciplinOgResultater) {
     }
 
     public String toString() {
