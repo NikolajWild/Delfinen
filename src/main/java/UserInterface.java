@@ -155,7 +155,6 @@ public class UserInterface {
             } else {
                 System.out.println("Svømmedisciplin findes ikke.");
             }
-            medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, træner, hold, svømmedisciplingOgResultater);
             medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo, træner, hold, svømmedisciplingOgResultater);
         } else {
             medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
