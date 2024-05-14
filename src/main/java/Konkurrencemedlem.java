@@ -15,9 +15,6 @@ public class Konkurrencemedlem extends Medlem {
         this.svømmedisciplinOgResultater = svømmedisciplinOgResultater;
     }
 
-    public void tilføjSvømmedisciplinOgResultater(SvømmedisciplinOgResultater svømmedisciplinOgResultater) {
-    }
-
     public String toString() {
         return "Navn: "  + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold;
     }
