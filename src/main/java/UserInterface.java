@@ -18,6 +18,7 @@ public class UserInterface {
                              4) Vis Kontingent
                              5) Medlemmer i restance
                              6) Medlemsoversigt
+                             7) Indbetal
                 
                     """);
 
@@ -93,10 +94,12 @@ public class UserInterface {
                 case 5:
                     restance();
                     break;
+
             }
 
         }
     }
+
     public void restance(){
         List<Medlem> medLemmer = controller.medlemmerMedNegativSaldo();
         if(medLemmer.isEmpty()){
