@@ -160,6 +160,7 @@ public class UserInterface {
             ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
             System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
             String svømmedisciplin = scanner.nextLine();
+            svømmedisciplin = scanner.nextLine();
             if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
                 System.out.println("1) Angiv resultat og dato for resultat.");
                 System.out.println("2) Afslut og opret medlem.");

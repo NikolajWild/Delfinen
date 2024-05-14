@@ -25,6 +25,21 @@ public class FileHandler {
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] attributes = line.split(",");
+            if(attributes.length > 5){
+                Konkurrencemedlem konkurrencemedlem = new Konkurrencemedlem(
+                        //String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo, String træner, String hold, ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater
+                        attributes[0],
+                        (Integer.parseInt(attributes[1])),
+                        (Boolean.parseBoolean(attributes[2])),
+                        (Boolean.parseBoolean(attributes[3])),
+                        (Double.parseDouble(attributes[4])),
+                        attributes[5],
+                        attributes[6],
+                        new ArrayList<>()
+
+                );
+                medlemsData.add(konkurrencemedlem);
+            } else {
             medlemFil = new Medlem(
                     attributes[0],
                     (Integer.parseInt(attributes[1])),
@@ -35,7 +50,8 @@ public class FileHandler {
             );
             medlemsData.add(medlemFil);
         }
-        sc.close();
+
+    }sc.close();
         return medlemsData;
     }
 
@@ -45,7 +61,7 @@ public class FileHandler {
                 PrintStream saves = new PrintStream("medlemmer.csv")) {
             for (Medlem medlemmer : medlemsListe) {
                 String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() +","+medlemmer.getAktivtMedlemskab()+","+
-                        medlemmer.getJuniorMedlemskab();
+                        medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo();
                 saves.println(medlem);
             }
             System.out.println("Gem Liste");
