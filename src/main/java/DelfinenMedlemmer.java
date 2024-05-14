@@ -60,6 +60,7 @@ public class DelfinenMedlemmer {
                         boolean nytKonkurrenceMotionistSvømmer = Boolean.parseBoolean(nyVærdi);
                         medlem.setJuniorMedlemskab(nytKonkurrenceMotionistSvømmer);
                         break;
+                    case 5:
                 }
 
             }
