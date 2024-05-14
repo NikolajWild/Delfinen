@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -6,7 +8,7 @@ import java.util.Scanner;
 public class UserInterface {
     Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
-
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public void startProgram() {
         while (true) {
             System.out.println("""
