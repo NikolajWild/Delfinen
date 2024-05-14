@@ -12,9 +12,9 @@ public class Medlem {
 Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo){
     this.navn = navn;
     this.alder = alder;
-    this.saldo = saldo;
     this.aktivtMedlemskab = aktivtMedlemskab;
     this.juniorMedlemskab = juniorMedlemskab;
+    this.saldo = saldo;
 }
 public int getAlder(){
     return alder;
