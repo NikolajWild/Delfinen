@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class Controller {
 
@@ -35,5 +37,8 @@ public class Controller {
        return kontingent.beregningAfKontingent();
     }
 
+    public List<Medlem> medlemmerMedNegativSaldo(){
+        return instanceDelfinenMedlemmer.findMedlemmerIRestance();
+    }
 
 }

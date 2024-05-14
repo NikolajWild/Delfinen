@@ -1,10 +1,14 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
     Controller controller = new Controller();
     Scanner scanner = new Scanner(System.in);
-
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     public void startProgram() {
         while (true) {
             System.out.println("""
@@ -12,10 +16,10 @@ public class UserInterface {
                              2) Søg på medlem
                              3) Rediger medlem
                              4) Vis Kontingent
-                             5) Gem medlemsliste
+                             5) Medlemmer i restance
                              6) Medlemsoversigt
-                             
-                             
+                             7) Indbetal
+                
                     """);
 
             int input = scanner.nextInt();
@@ -87,8 +91,24 @@ public class UserInterface {
                 case 4:
                     visKontingent();
                     break;
+                case 5:
+                    restance();
+                    break;
+
             }
 
+        }
+    }
+
+    public void restance(){
+        List<Medlem> medLemmer = controller.medlemmerMedNegativSaldo();
+        if(medLemmer.isEmpty()){
+            System.out.println("Ingen medlemmer er i restance");
+        } else{
+            System.out.println("Medlemmer i restance : ");
+            for (Medlem medlem : medLemmer){
+                System.out.println(medlem.getNavn() + " Saldo: " + medlem.getSaldo());
+            }
         }
     }
 

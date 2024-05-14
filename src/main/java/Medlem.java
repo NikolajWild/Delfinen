@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Medlem {
 
     private String navn;
@@ -5,6 +7,7 @@ public class Medlem {
     private boolean aktivtMedlemskab;
     private boolean juniorMedlemskab = alder < 18;
     private double saldo;
+
 
 Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo){
     this.navn = navn;
