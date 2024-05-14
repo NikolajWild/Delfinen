@@ -8,8 +8,6 @@ public class Konkurrencemedlem extends Medlem {
     ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater = new ArrayList<>();
     LocalDate resultater = LocalDate.now();
 
-
-
     public Konkurrencemedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo, String træner, String hold, ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater) {
         super (navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         this.træner = træner;

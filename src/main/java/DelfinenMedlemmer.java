@@ -106,5 +106,5 @@ public class DelfinenMedlemmer {
             }
         }
         return medlemmerIRestance;
-    }//asd
+    }
 }
