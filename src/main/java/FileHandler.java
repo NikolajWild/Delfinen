@@ -48,7 +48,6 @@ public class FileHandler {
                         medlemmer.getJuniorMedlemskab();
                 saves.println(medlem);
             }
-            System.out.println("Gem Liste");
         } catch (
                 FileNotFoundException e) {
             System.err.println("File Not Found");

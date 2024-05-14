@@ -45,6 +45,7 @@ public class UserInterface {
                     System.out.println("2) Redigér alder");
                     System.out.println("3) Redigér aktivt/passivt medlemskab");
                     System.out.println("4) Redigér motionist-/konkurrencessvømmer");
+                    System.out.println("5) Opdater svømmediscipliner og resultater");
                     int redigeringsValg = scanner.nextInt();
                     switch (redigeringsValg) {
                         case 1:
@@ -86,7 +87,36 @@ public class UserInterface {
                             System.out.println();
                             System.out.println(medlemRed);
                             break;
+                        case 5:
+                            ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+                            System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
+                            scanner.nextLine();
+                            String svømmedisciplin = scanner.nextLine();
+                            if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
+                                System.out.println("1) Angiv/opdater resultat og dato for resultat i svømmedisciplin.");
+                                System.out.println("2) Afslut og gem ændringer");
+                                int resultatValg = scanner.nextInt();
+                                switch (resultatValg) {
+                                    case 1:
+                                        System.out.println("Angiv resultat i sekunder: ");
+                                        double resultat = scanner.nextDouble();
+                                        System.out.println("Angiv dato for resultat: ");
+                                        System.out.println("År: ");
+                                        int år = scanner.nextInt();
+                                        System.out.println("Måned: ");
+                                        int måned = scanner.nextInt();
+                                        System.out.println("Dag: ");
+                                        int dag = scanner.nextInt();
+                                        SvømmedisciplinOgResultater resultater = new SvømmedisciplinOgResultater(svømmedisciplin, resultat, år, måned, dag);
+                                        svømmedisciplingOgResultater.add(resultater);
+                                        break;
+                                    case 2:
+                                        break;
+                                } } else {
+                                System.out.println("Svømmedisciplin eksisterer ikke. Tjek eventuelle tastefejl.");
+                            }
                     }
+                    System.out.println("Ændringer er gemt.");
                     break;
                 case 4:
                     visKontingent();
@@ -99,6 +129,8 @@ public class UserInterface {
 
         }
     }
+
+
 
     public void restance(){
         List<Medlem> medLemmer = controller.medlemmerMedNegativSaldo();
@@ -150,8 +182,7 @@ public class UserInterface {
         if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
             konkurrenceSvømmer = true;
         }
-        System.out.println("Indbetal penge til din konto");
-        double saldo = scanner.nextDouble();
+        double saldo = 2000;
         Medlem medlem;
 
         if (konkurrenceSvømmer) {
@@ -161,7 +192,7 @@ public class UserInterface {
             System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
             String svømmedisciplin = scanner.nextLine();
             if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
-                System.out.println("1) Angiv resultat og dato for resultat.");
+                System.out.println("1) Angiv resultat og dato for resultat i svømmedisciplin.");
                 System.out.println("2) Afslut og opret medlem.");
                 int resultatValg = scanner.nextInt();
                 switch (resultatValg) {
@@ -188,7 +219,7 @@ public class UserInterface {
             medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         }
         controller.tilføjMedlem(medlem);
-        System.out.println("Medlem er blevet tilføjet");
+        System.out.println("Medlem er blevet oprettet.");
         System.out.println();
         System.out.println(medlem);
 
