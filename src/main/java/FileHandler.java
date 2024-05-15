@@ -22,18 +22,33 @@ public class FileHandler {
         }
 
         Medlem medlemFil = null;
+        Konkurrencemedlem konkurrenceMedlemFil = null;
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] attributes = line.split(",");
-            medlemFil = new Medlem(
-                    attributes[0],
-                    (Integer.parseInt(attributes[1])),
-                    (Boolean.parseBoolean(attributes[2])),
-                    (Boolean.parseBoolean(attributes[3])),
-                    (Double.parseDouble(attributes[4]))
+            if (attributes.length < 5) {
+                medlemFil = new Medlem(
+                        attributes[0],
+                        (Integer.parseInt(attributes[1])),
+                        (Boolean.parseBoolean(attributes[2])),
+                        (Boolean.parseBoolean(attributes[3])),
+                        (Double.parseDouble(attributes[4]))
 
-            );
-            medlemsData.add(medlemFil);
+                );
+                medlemsData.add(medlemFil);
+            } else {
+                konkurrenceMedlemFil = new Konkurrencemedlem(
+                        attributes[0],
+                        (Integer.parseInt(attributes[1])),
+                        (Boolean.parseBoolean(attributes[2])),
+                        (Boolean.parseBoolean(attributes[3])),
+                        (Double.parseDouble(attributes[4])),
+                        attributes[5],
+                        attributes[6],
+                        new ArrayList<>()
+                );
+                medlemsData.add(konkurrenceMedlemFil);
+            }
         }
         sc.close();
         return medlemsData;
@@ -45,7 +60,7 @@ public class FileHandler {
                 PrintStream saves = new PrintStream("medlemmer.csv")) {
             for (Medlem medlemmer : medlemsListe) {
                 String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() +","+medlemmer.getAktivtMedlemskab()+","+
-                        medlemmer.getJuniorMedlemskab();
+                        medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo();
                 saves.println(medlem);
             }
         } catch (
