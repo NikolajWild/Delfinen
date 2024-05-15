@@ -14,10 +14,15 @@ public class SvømmedisciplinOgResultater {
         this.dag = dag;
     }
 
+    @Override
+    public String toString() {
+        return "svømmedisciplin: " + svømmedisciplin+"\n"+
+                "Resultat i sekunder: " + resultat +" Dato: " + dag + "/"+måned+"-"+år;
+
+    }
 
 
-
-    ////////////////////////
+////////////////////////
     // NOGET DATO HER EVT //
     ////////////////////////
 

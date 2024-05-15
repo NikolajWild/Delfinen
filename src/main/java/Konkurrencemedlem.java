@@ -30,6 +30,7 @@ public class Konkurrencemedlem extends Medlem {
     }
 
     public String toString() {
-        return "Navn: "  + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold;
+        return "Navn: "  + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold + "\n Resultater " + getSvømmedisciplinOgResultater();
     }
+
 }

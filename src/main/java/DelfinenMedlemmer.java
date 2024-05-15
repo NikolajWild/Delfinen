@@ -108,4 +108,12 @@ public class DelfinenMedlemmer {
         }
         return medlemmerIRestance;
     }
+    public ArrayList<SvømmedisciplinOgResultater>sorterResultater() {
+        medlemskollektion.sort(new SvømmedisciplinsResultatComparator().thenComparing(new TidComparator());
+        return medlemskollektion;
+    }
+
+
+
+
 }

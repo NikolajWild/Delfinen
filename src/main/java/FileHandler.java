@@ -26,7 +26,7 @@ public class FileHandler {
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] attributes = line.split(",");
-            if (attributes.length < 5) {
+            if (attributes.length < 6) {
                 medlemFil = new Medlem(
                         attributes[0],
                         (Integer.parseInt(attributes[1])),
@@ -59,10 +59,17 @@ public class FileHandler {
         try (
                 PrintStream saves = new PrintStream("medlemmer.csv")) {
             for (Medlem medlemmer : medlemsListe) {
-                String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() +","+medlemmer.getAktivtMedlemskab()+","+
-                        medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo();
-                saves.println(medlem);
-            }
+                if (medlemmer instanceof Konkurrencemedlem) {
+                    String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
+                            medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo() + "," + ((Konkurrencemedlem) medlemmer).getTræner()+","
+                            +((Konkurrencemedlem) medlemmer).getHold()+";"+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater();
+                    saves.println(medlem);
+                }else{
+                        String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
+                                medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo();
+                    saves.println(medlem);
+                    }
+                }
         } catch (
                 FileNotFoundException e) {
             System.err.println("File Not Found");

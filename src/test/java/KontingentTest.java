@@ -14,12 +14,16 @@ class KontingentTest {
 
         // Tager udgangspunkt i vores faktiske fil. Med disse medlemmer
 
-        /*Nikolaj,21,false,true, 499
-        Anders,61,false,true, 1000
-        Nikolaj,21,true,true,100000
-        nikolaj,21,true,true, 100000*/
+        /*sadsad,21,true,false,2000.0,Maria Clausen,Seniorhold;[];[];[];[];[];[];[]
+asdsad,21,true,false,2000.0,Maria Clausen,Seniorhold;[SvÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¸mmedisciplinOgResultater@17a7cec2];[];[];[];[];[];[]
+asdsad,21,true,false,2000.0,Maria Clausen,Seniorhold;[SvÃÂÃÂÃÂÃÂ¸mmedisciplinOgResultater@27973e9b];[];[];[];[];[]
+sad,21,true,false,2000.0,Maria Clausen,Seniorhold;[SvÃÂÃÂÃÂÃÂ¸mmedisciplinOgResultater@27973e9b];[];[];[];[]
+sadsad,21,true,false,2000.0,Maria Clausen,Seniorhold;[SvÃÂÃÂ¸mmedisciplinOgResultater{svÃÂÃÂ¸mmedisciplin='butterfly';[];[];[]
+asdasd,21,true,false,2000.0,Maria Clausen,Seniorhold;[svÃÂ¸mmedisciplinbutterflyTid i sekunder: 12.0 Dato: 12/12-12];[];[]
+asda,1,true,true,2000.0
+asda,1,true,true,200.0*/
         double actualValue = kontingent.beregningAfKontingent();
-        double expectedValue = 4200;
+        double expectedValue = 11600;
 
         assertEquals(expectedValue, actualValue);
     }
