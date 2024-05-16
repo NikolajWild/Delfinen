@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.List;
 
 public class Medlem {
 
@@ -25,6 +26,7 @@ public double getSaldo(){
 public void setSaldo(){
     this.saldo = saldo;
 }
+
 
 
 public String getNavn(){

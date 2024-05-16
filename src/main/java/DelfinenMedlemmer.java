@@ -1,12 +1,13 @@
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class DelfinenMedlemmer {
 
     private ArrayList<Medlem> medlemskollektion = new ArrayList<>();
 
     private FileHandler fileHandler;
+
+    private ArrayList<Konkurrencemedlem> konkurrencemedlemsKollektion = new ArrayList<>();
 
     public DelfinenMedlemmer(){
         this.fileHandler = new FileHandler();
@@ -108,12 +109,9 @@ public class DelfinenMedlemmer {
         }
         return medlemmerIRestance;
     }
-    public ArrayList<SvømmedisciplinOgResultater>sorterResultater() {
-        medlemskollektion.sort(new SvømmedisciplinsResultatComparator().thenComparing(new TidComparator());
-        return medlemskollektion;
+    public ArrayList<Konkurrencemedlem>sorterResultater() {
+        konkurrencemedlemsKollektion.sort(new SvømmedisciplinsResultatComparator());
+        return konkurrencemedlemsKollektion;
     }
-
-
-
 
 }

@@ -40,5 +40,7 @@ public class Controller {
     public List<Medlem> medlemmerMedNegativSaldo(){
         return instanceDelfinenMedlemmer.findMedlemmerIRestance();
     }
-
+    public List<Konkurrencemedlem> sorterMedlemmer(){
+        return instanceDelfinenMedlemmer.sorterResultater();
+    }
 }

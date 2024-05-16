@@ -1,13 +1,12 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Konkurrencemedlem extends Medlem {
 
     private String træner = getAlder() < 18 ? "Peter Jacobsen" : "Maria Clausen";
     private String hold = getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
     private ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater = new ArrayList<>();
-
-
     LocalDate resultater = LocalDate.now();
 
     public String getTræner(){

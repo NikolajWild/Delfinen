@@ -16,8 +16,7 @@ public class SvømmedisciplinOgResultater {
 
     @Override
     public String toString() {
-        return "svømmedisciplin: " + svømmedisciplin+"\n"+
-                "Resultat i sekunder: " + resultat +" Dato: " + dag + "/"+måned+"-"+år;
+        return "svømmedisciplin: " + svømmedisciplin+ " Resultat i sekunder: " + resultat +" Dato: " + dag + "/"+måned+"-"+år;
 
     }
 

@@ -17,7 +17,7 @@ public class UserInterface {
                              3) Rediger medlem
                              4) Vis Kontingent
                              5) Medlemmer i restance
-                             6) Medlemsoversigt
+                             6) Sorter
                              7) Indbetal
                 
                     """);
@@ -124,14 +124,18 @@ public class UserInterface {
                 case 5:
                     restance();
                     break;
-
+                case 6:
+                    sorterMedlemmer();
             }
 
         }
     }
 
 
-
+    public void sorterMedlemmer(){
+        controller.sorterMedlemmer();
+        System.out.println(controller.instanceDelfinenMedlemmer.listeAfMedlemmer());
+    }
     public void restance(){
         List<Medlem> medLemmer = controller.medlemmerMedNegativSaldo();
         if(medLemmer.isEmpty()){
@@ -191,7 +195,6 @@ public class UserInterface {
             ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
             System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
             String svømmedisciplin = scanner.nextLine();
-            svømmedisciplin = scanner.nextLine();
             if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
                 System.out.println("1) Angiv resultat og dato for resultat i svømmedisciplin.");
                 System.out.println("2) Afslut og opret medlem.");
