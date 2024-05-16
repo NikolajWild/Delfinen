@@ -22,12 +22,22 @@ public class FileHandler {
         }
 
         Medlem medlemFil = null;
+        Konkurrencemedlem konkurrenceMedlemFil = null;
         while (sc.hasNext()) {
             String line = sc.nextLine();
             String[] attributes = line.split(",");
-            if(attributes.length > 5){
-                Konkurrencemedlem konkurrencemedlem = new Konkurrencemedlem(
-                        //String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo, String træner, String hold, ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater
+            if (attributes.length < 6) {
+                medlemFil = new Medlem(
+                        attributes[0],
+                        (Integer.parseInt(attributes[1])),
+                        (Boolean.parseBoolean(attributes[2])),
+                        (Boolean.parseBoolean(attributes[3])),
+                        (Double.parseDouble(attributes[4]))
+
+                );
+                medlemsData.add(medlemFil);
+            } else {
+                konkurrenceMedlemFil = new Konkurrencemedlem(
                         attributes[0],
                         (Integer.parseInt(attributes[1])),
                         (Boolean.parseBoolean(attributes[2])),
@@ -36,22 +46,11 @@ public class FileHandler {
                         attributes[5],
                         attributes[6],
                         new ArrayList<>()
-
                 );
-                medlemsData.add(konkurrencemedlem);
-            } else {
-            medlemFil = new Medlem(
-                    attributes[0],
-                    (Integer.parseInt(attributes[1])),
-                    (Boolean.parseBoolean(attributes[2])),
-                    (Boolean.parseBoolean(attributes[3])),
-                    (Double.parseDouble(attributes[4]))
-
-            );
-            medlemsData.add(medlemFil);
+                medlemsData.add(konkurrenceMedlemFil);
+            }
         }
-
-    }sc.close();
+        sc.close();
         return medlemsData;
     }
 
@@ -60,10 +59,17 @@ public class FileHandler {
         try (
                 PrintStream saves = new PrintStream("medlemmer.csv")) {
             for (Medlem medlemmer : medlemsListe) {
-                String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() +","+medlemmer.getAktivtMedlemskab()+","+
-                        medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo();
-                saves.println(medlem);
-            }
+                if (medlemmer instanceof Konkurrencemedlem) {
+                    String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
+                            medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo() + "," + ((Konkurrencemedlem) medlemmer).getTræner()+","
+                            +((Konkurrencemedlem) medlemmer).getHold()+";"+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater();
+                    saves.println(medlem);
+                }else{
+                        String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
+                                medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo();
+                    saves.println(medlem);
+                    }
+                }
         } catch (
                 FileNotFoundException e) {
             System.err.println("File Not Found");
