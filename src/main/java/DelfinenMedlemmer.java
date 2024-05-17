@@ -19,6 +19,9 @@ public class DelfinenMedlemmer {
     public ArrayList<Medlem> getMedlemskollektion() {
         return medlemskollektion;
     }
+    public ArrayList<Konkurrencemedlem>getKonkurrencemedlemsKollektion(){
+        return konkurrencemedlemsKollektion;
+    }
 
     //viser dag i måned (now og of er vigtige)
     public static void LocalDate() {
@@ -87,6 +90,14 @@ public class DelfinenMedlemmer {
         return listeAfMedlemmer;
     }
 
+    public ArrayList<String> listeAfKonkurrence() {
+        ArrayList<String> listeAfKonkurrence = new ArrayList<>();
+        for (int i = 0; i < konkurrencemedlemsKollektion.size(); i++) {
+            listeAfKonkurrence.add(konkurrencemedlemsKollektion.get(i).toString());
+        }
+        return listeAfKonkurrence;
+    }
+
 
     public List<Medlem> findMedlemmerIRestance() {
         List<Medlem> medlemmerIRestance = new ArrayList<>();
@@ -109,8 +120,13 @@ public class DelfinenMedlemmer {
         }
         return medlemmerIRestance;
     }
-    public ArrayList<Konkurrencemedlem>sorterResultater() {
-        konkurrencemedlemsKollektion.sort(new SvømmedisciplinsResultatComparator());
+    public ArrayList<Konkurrencemedlem> sorterResultater() {
+        for (Medlem medlem:medlemskollektion){
+            if (medlem instanceof Konkurrencemedlem){
+                konkurrencemedlemsKollektion.add((Konkurrencemedlem) medlem);
+            }
+        }
+        konkurrencemedlemsKollektion.sort(new KonkurrenceMedlemsResultatComparator());
         return konkurrencemedlemsKollektion;
     }
 

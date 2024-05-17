@@ -37,6 +37,7 @@ public class FileHandler {
                 );
                 medlemsData.add(medlemFil);
             } else {
+                SvømmedisciplinOgResultater svømmedisciplinOgResultater;
                 konkurrenceMedlemFil = new Konkurrencemedlem(
                         attributes[0],
                         (Integer.parseInt(attributes[1])),
@@ -45,7 +46,14 @@ public class FileHandler {
                         (Double.parseDouble(attributes[4])),
                         attributes[5],
                         attributes[6],
-                        new ArrayList<>()
+                        new SvømmedisciplinOgResultater(
+                                attributes[7],
+                                (Double.parseDouble(attributes[8])),
+                                (Integer.parseInt(attributes[9])),
+                                (Integer.parseInt(attributes[10])),
+                                (Integer.parseInt(attributes[11]))
+
+                        )
                 );
                 medlemsData.add(konkurrenceMedlemFil);
             }
@@ -62,7 +70,7 @@ public class FileHandler {
                 if (medlemmer instanceof Konkurrencemedlem) {
                     String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
                             medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo() + "," + ((Konkurrencemedlem) medlemmer).getTræner()+","
-                            +((Konkurrencemedlem) medlemmer).getHold()+";"+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater();
+                            +((Konkurrencemedlem) medlemmer).getHold()+","+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater();
                     saves.println(medlem);
                 }else{
                         String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +

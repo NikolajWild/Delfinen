@@ -7,6 +7,7 @@ public class Controller {
     DelfinenMedlemmer instanceDelfinenMedlemmer = new DelfinenMedlemmer();
     Kontingent kontingent = new Kontingent(instanceDelfinenMedlemmer);
 
+
     public void tilføjMedlem(Medlem medlem) {
         instanceDelfinenMedlemmer.tilføjMedlem(medlem);
     }
@@ -20,6 +21,11 @@ public class Controller {
         return instanceDelfinenMedlemmer;
     }
 
+    public ArrayList<Konkurrencemedlem> getKonkurrenceMedlem() {
+        return instanceDelfinenMedlemmer.getKonkurrencemedlemsKollektion();
+    }
+
+
 
     public void getMåned() {
         instanceDelfinenMedlemmer.LocalDate();
@@ -27,6 +33,10 @@ public class Controller {
 
     public ArrayList<String> listeAfMedlemmer() {
         return instanceDelfinenMedlemmer.listeAfMedlemmer();
+    }
+
+    public ArrayList<String> listeAfKonkurrence() {
+        return instanceDelfinenMedlemmer.listeAfKonkurrence();
     }
 
     public ArrayList<Medlem> redigérMedlem(String navn, int redigeringsvalg, String nyVærdi) {
@@ -40,7 +50,7 @@ public class Controller {
     public List<Medlem> medlemmerMedNegativSaldo(){
         return instanceDelfinenMedlemmer.findMedlemmerIRestance();
     }
-    public List<Konkurrencemedlem> sorterMedlemmer(){
+    public ArrayList<Konkurrencemedlem> sorterMedlemmer(){
         return instanceDelfinenMedlemmer.sorterResultater();
     }
 }

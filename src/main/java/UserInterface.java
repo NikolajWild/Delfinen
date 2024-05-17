@@ -78,7 +78,7 @@ public class UserInterface {
                                 System.out.println("Angiv medlems træner: ");
                                 String træner = scanner.nextLine();
                                 String hold = medlemRed.getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
-                                ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+                                SvømmedisciplinOgResultater svømmedisciplingOgResultater = null;
                                 medlemRed = new Konkurrencemedlem(medlemRed.getNavn(), medlemRed.getAlder(), medlemRed.getAktivtMedlemskab(), medlemRed.getJuniorMedlemskab(), medlemRed.getSaldo(), træner, hold, svømmedisciplingOgResultater);
                             }
 
@@ -134,7 +134,7 @@ public class UserInterface {
 
     public void sorterMedlemmer(){
         controller.sorterMedlemmer();
-        System.out.println(controller.instanceDelfinenMedlemmer.listeAfMedlemmer());
+        System.out.println(controller.listeAfKonkurrence());
     }
     public void restance(){
         List<Medlem> medLemmer = controller.medlemmerMedNegativSaldo();
@@ -192,7 +192,7 @@ public class UserInterface {
         if (konkurrenceSvømmer) {
             String træner = alder < 18 ? "Peter Jacobsen" : "Maria Clausen";
             String hold = alder < 18 ? "Ungdomshold" : "Seniorhold";
-            ArrayList<SvømmedisciplinOgResultater> svømmedisciplingOgResultater = new ArrayList<>();
+            SvømmedisciplinOgResultater svømmedisciplinOgResultater = null;
             System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
             String svømmedisciplin = scanner.nextLine();
             if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
@@ -210,15 +210,15 @@ public class UserInterface {
                         int måned = scanner.nextInt();
                         System.out.println("Dag: ");
                         int dag = scanner.nextInt();
-                        SvømmedisciplinOgResultater resultater = new SvømmedisciplinOgResultater(svømmedisciplin, resultat, år, måned, dag);
-                        svømmedisciplingOgResultater.add(resultater);
+                        svømmedisciplinOgResultater = new SvømmedisciplinOgResultater(svømmedisciplin, resultat, år, måned, dag);
+                        
                     case 2:
                         break;
                 }
             } else {
                 System.out.println("Svømmedisciplin eksisterer ikke. Tjek eventuelle tastefejl.");
             }
-            medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo, træner, hold, svømmedisciplingOgResultater);
+            medlem = new Konkurrencemedlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo, træner, hold, svømmedisciplinOgResultater);
         } else {
             medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         }

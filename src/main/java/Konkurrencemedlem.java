@@ -6,7 +6,7 @@ public class Konkurrencemedlem extends Medlem {
 
     private String træner = getAlder() < 18 ? "Peter Jacobsen" : "Maria Clausen";
     private String hold = getAlder() < 18 ? "Ungdomshold" : "Seniorhold";
-    private ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater = new ArrayList<>();
+    private SvømmedisciplinOgResultater svømmedisciplinOgResultater;
     LocalDate resultater = LocalDate.now();
 
     public String getTræner(){
@@ -17,11 +17,11 @@ public class Konkurrencemedlem extends Medlem {
         return hold;
     }
 
-    public ArrayList<SvømmedisciplinOgResultater> getSvømmedisciplinOgResultater() {
+    public SvømmedisciplinOgResultater getSvømmedisciplinOgResultater() {
         return svømmedisciplinOgResultater;
     }
 
-    public Konkurrencemedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo, String træner, String hold, ArrayList<SvømmedisciplinOgResultater> svømmedisciplinOgResultater) {
+    public Konkurrencemedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo, String træner, String hold, SvømmedisciplinOgResultater svømmedisciplinOgResultater) {
         super (navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         this.træner = træner;
         this.hold = hold;
