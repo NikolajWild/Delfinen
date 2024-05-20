@@ -43,16 +43,17 @@ public class UserInterface {
                 case 6:
                     sorterMedlemmer();
                     break;
-                /*case 7:
-                    top5PåTid();*/
+                case 7:
+                    top5Bedste();
+                    break;
             }
 
         }
     }
-    /*public void top5PåTid(){
-        controller.top5PåTid();
-        System.out.println(controller.listeAfMedlemmer());
-    }*/
+    public void top5Bedste(){
+        controller.top5Bedste();
+        System.out.println(controller.top5Bedste());
+    }
 
     public void sorterMedlemmer(){
         System.out.println("Tast 1 for at sortere medlemmer på deres resultat eller 2 for at sortere på disciplin");

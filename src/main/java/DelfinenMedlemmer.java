@@ -98,15 +98,14 @@ public class DelfinenMedlemmer {
     }
 
 
-    /*public ArrayList<Konkurrencemedlem> top5PåTid(){
-        for (Medlem medlem : medlemskollektion) {
-            if (medlem instanceof Konkurrencemedlem) {
-                konkurrencemedlemsKollektion.add((Konkurrencemedlem) medlem);
-            }
-            konkurrencemedlemsKollektion.get(4);
+    public List<Konkurrencemedlem> top5Bedste(){
+        sorterResultater();
+        List<Konkurrencemedlem> top5= new ArrayList<>();
+        for (int i = 0; i<5&& i<konkurrencemedlemsKollektion.size(); i++) {
+            top5.add(konkurrencemedlemsKollektion.get(i));
         }
-        return konkurrencemedlemsKollektion;
-    }*/
+        return top5;
+    }
     public ArrayList<Konkurrencemedlem> sorterResultater() {
         konkurrencemedlemsKollektion.clear();
         for (Medlem medlem:medlemskollektion){

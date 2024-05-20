@@ -52,7 +52,7 @@ public class Controller {
     public ArrayList<Konkurrencemedlem> sorterDisciplin(){
         return instanceDelfinenMedlemmer.sorterDisciplin();
     }
-    /*public ArrayList<Konkurrencemedlem> top5PåTid(){
-        return instanceDelfinenMedlemmer.top5PåTid();
-    }*/
+    public List<Konkurrencemedlem> top5Bedste(){
+        return instanceDelfinenMedlemmer.top5Bedste();
+    }
 }
