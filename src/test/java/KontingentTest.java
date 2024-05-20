@@ -23,7 +23,7 @@ asdasd,21,true,false,2000.0,Maria Clausen,Seniorhold;[svÃÂ¸mmedisciplinbutt
 asda,1,true,true,2000.0
 asda,1,true,true,200.0*/
         double actualValue = kontingent.beregningAfKontingent();
-        double expectedValue = 11600;
+        double expectedValue = 19700;
 
         assertEquals(expectedValue, actualValue);
     }

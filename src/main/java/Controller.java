@@ -17,10 +17,6 @@ public class Controller {
     }
 
 
-    public DelfinenMedlemmer getInstanceDelfinen() {
-        return instanceDelfinenMedlemmer;
-    }
-
     public ArrayList<Konkurrencemedlem> getKonkurrenceMedlem() {
         return instanceDelfinenMedlemmer.getKonkurrencemedlemsKollektion();
     }
@@ -48,9 +44,15 @@ public class Controller {
     }
 
     public List<Medlem> medlemmerMedNegativSaldo(){
-        return instanceDelfinenMedlemmer.findMedlemmerIRestance();
+        return kontingent.findMedlemmerIRestance();
     }
     public ArrayList<Konkurrencemedlem> sorterMedlemmer(){
         return instanceDelfinenMedlemmer.sorterResultater();
     }
+    public ArrayList<Konkurrencemedlem> sorterDisciplin(){
+        return instanceDelfinenMedlemmer.sorterDisciplin();
+    }
+    /*public ArrayList<Konkurrencemedlem> top5PåTid(){
+        return instanceDelfinenMedlemmer.top5PåTid();
+    }*/
 }

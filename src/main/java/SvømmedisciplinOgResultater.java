@@ -35,6 +35,18 @@ public class SvømmedisciplinOgResultater {
         return resultat;
     }
 
+    public int getÅr() {
+        return år;
+    }
+
+    public int getMåned() {
+        return måned;
+    }
+
+    public int getDag() {
+        return dag;
+    }
+
     public void setSvømmedisciplin(String svømmedisciplin){
         this.svømmedisciplin = svømmedisciplin;
     }

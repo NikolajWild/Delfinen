@@ -78,55 +78,53 @@ public class DelfinenMedlemmer {
         medlemskollektion.add(medlem);
 
         fileHandler.gemListeAfMedlemmer(medlemskollektion);
-
-        //to do lav save funktion her.
     }
 
     public ArrayList<String> listeAfMedlemmer() {
         ArrayList<String> listeAfMedlemmer = new ArrayList<>();
-        for (int i = 0; i < medlemskollektion.size(); i++) {
-            listeAfMedlemmer.add(medlemskollektion.get(i).toString());
+        for (Medlem medlem: medlemskollektion) {
+            listeAfMedlemmer.add(medlem.toString());
         }
         return listeAfMedlemmer;
     }
 
     public ArrayList<String> listeAfKonkurrence() {
+
         ArrayList<String> listeAfKonkurrence = new ArrayList<>();
-        for (int i = 0; i < konkurrencemedlemsKollektion.size(); i++) {
-            listeAfKonkurrence.add(konkurrencemedlemsKollektion.get(i).toString());
+        for (Konkurrencemedlem konkurrencemedlem: konkurrencemedlemsKollektion) {
+            listeAfKonkurrence.add(konkurrencemedlem.toString());
         }
         return listeAfKonkurrence;
     }
 
 
-    public List<Medlem> findMedlemmerIRestance() {
-        List<Medlem> medlemmerIRestance = new ArrayList<>();
+    /*public ArrayList<Konkurrencemedlem> top5PåTid(){
         for (Medlem medlem : medlemskollektion) {
-            double kontingent = 0.0;
-            if (medlem.getAktivtMedlemskab()) {
-                if (medlem.getAlder() < 18) {
-                    kontingent += 1000;
-                } else if (medlem.getAlder() >= 60) {
-                    kontingent += 1600 * 0.75;
-                } else {
-                    kontingent += 1600;
-                }
-            } else {
-                kontingent += 500;
+            if (medlem instanceof Konkurrencemedlem) {
+                konkurrencemedlemsKollektion.add((Konkurrencemedlem) medlem);
             }
-            if (medlem.getSaldo() < kontingent){
-                medlemmerIRestance.add(medlem);
-            }
+            konkurrencemedlemsKollektion.get(4);
         }
-        return medlemmerIRestance;
-    }
+        return konkurrencemedlemsKollektion;
+    }*/
     public ArrayList<Konkurrencemedlem> sorterResultater() {
+        konkurrencemedlemsKollektion.clear();
         for (Medlem medlem:medlemskollektion){
             if (medlem instanceof Konkurrencemedlem){
                 konkurrencemedlemsKollektion.add((Konkurrencemedlem) medlem);
             }
         }
         konkurrencemedlemsKollektion.sort(new KonkurrenceMedlemsResultatComparator());
+        return konkurrencemedlemsKollektion;
+    }
+    public ArrayList<Konkurrencemedlem> sorterDisciplin() {
+        konkurrencemedlemsKollektion.clear();
+        for (Medlem medlem:medlemskollektion){
+            if (medlem instanceof Konkurrencemedlem){
+                konkurrencemedlemsKollektion.add((Konkurrencemedlem) medlem);
+            }
+        }
+        konkurrencemedlemsKollektion.sort(new DisciplinComparator());
         return konkurrencemedlemsKollektion;
     }
 

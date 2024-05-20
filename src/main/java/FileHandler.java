@@ -70,7 +70,9 @@ public class FileHandler {
                 if (medlemmer instanceof Konkurrencemedlem) {
                     String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
                             medlemmer.getJuniorMedlemskab() + "," + medlemmer.getSaldo() + "," + ((Konkurrencemedlem) medlemmer).getTræner()+","
-                            +((Konkurrencemedlem) medlemmer).getHold()+","+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater();
+                            +((Konkurrencemedlem) medlemmer).getHold()+","+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater().getSvømmedisciplin()+","
+                            +((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater().getResultat()+","+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater().getDag()+","+
+                           ((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater().getMåned()+","+((Konkurrencemedlem) medlemmer).getSvømmedisciplinOgResultater().getÅr();
                     saves.println(medlem);
                 }else{
                         String medlem = medlemmer.getNavn() + "," + medlemmer.getAlder() + "," + medlemmer.getAktivtMedlemskab() + "," +
