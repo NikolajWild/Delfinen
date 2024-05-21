@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,10 +16,11 @@ public class UserInterface {
                              1) Tilføj medlem
                              2) Søg på medlem
                              3) Rediger medlem
-                             4) Vis Kontingent
-                             5) Medlemmer i restance
-                             6) Sorter
-                             7) Indbetal
+                             4) Rediger disciplin og resultat for medlem
+                             5) Vis Kontingent
+                             6) Medlemmer i restance
+                             7) Sorter
+                             8) Indbetal
                 
                     """);
 
@@ -35,18 +37,21 @@ public class UserInterface {
                     rediger();
                     break;
                 case 4:
-                    visKontingent();
+                    redigerSvømmedisciplinOgResultater();
                     break;
                 case 5:
-                    restance();
+                    visKontingent();
                     break;
                 case 6:
-                    sorterMedlemmer();
+                    restance();
                     break;
                 case 7:
-                    top5Bedste();
+                    sorterMedlemmer();
                     break;
                 case 8:
+                    top5Bedste();
+                    break;
+                case 9:
                     System.exit(0);
                     break;
             }
@@ -184,7 +189,6 @@ public class UserInterface {
         System.out.println("2) Redigér alder");
         System.out.println("3) Redigér aktivt/passivt medlemskab");
         System.out.println("4) Redigér motionist-/konkurrencessvømmer");
-        System.out.println("5) Opdater svømmediscipliner og resultater");
         int redigeringsValg = scanner.nextInt();
         switch (redigeringsValg) {
             case 1:
@@ -226,37 +230,43 @@ public class UserInterface {
                 System.out.println();
                 System.out.println(medlemRed);
                 break;
-            case 5:
-                SvømmedisciplinOgResultater svømmedisciplinOgResultater;
-                System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
-                scanner.nextLine();
-                String nyDisciplin = scanner.nextLine();
-                controller.redigérMedlem(navnRediger, redigeringsValg, nyDisciplin);
-                String svømmedisciplin = scanner.nextLine();
-                if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
-                    System.out.println("1) Angiv/opdater resultat og dato for resultat i svømmedisciplin.");
-                    System.out.println("2) Afslut og gem ændringer");
-                    int resultatValg = scanner.nextInt();
-                    switch (resultatValg) {
-                        case 1:
-                            System.out.println("Angiv resultat i sekunder: ");
-                            double resultat = scanner.nextDouble();
-                            System.out.println("Angiv dato for resultat: ");
-                            System.out.println("År: ");
-                            int år = scanner.nextInt();
-                            System.out.println("Måned: ");
-                            int måned = scanner.nextInt();
-                            System.out.println("Dag: ");
-                            int dag = scanner.nextInt();
-                            SvømmedisciplinOgResultater resultater = new SvømmedisciplinOgResultater(svømmedisciplin, resultat, år, måned, dag);
-                            break;
-                        case 2:
-                            break;
-                    } } else {
-                    System.out.println("Svømmedisciplin eksisterer ikke. Tjek eventuelle tastefejl.");
-                }
         }
         System.out.println("Ændringer er gemt.");
-
+    }
+    public void redigerSvømmedisciplinOgResultater(){
+        System.out.println("Søg efter navn på medlem nu ønsker at redigere: ");
+        scanner.nextLine();
+        String navnRediger = scanner.nextLine();
+        controller.søgMedlem(navnRediger);
+        Medlem medlemRed = controller.instanceDelfinenMedlemmer.searchMatch.get(0);
+        System.out.println(medlemRed);
+        System.out.println();
+        System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
+        String nyDisciplin = scanner.nextLine();
+        String svømmedisciplin = nyDisciplin;
+        if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
+            System.out.println("1) Angiv/opdater resultat og dato for resultat i svømmedisciplin.");
+            System.out.println("2) Afslut og gem ændringer");
+            int resultatValg = scanner.nextInt();
+            switch (resultatValg) {
+                case 1:
+                    System.out.println("Angiv resultat i sekunder: ");
+                    double resultat = scanner.nextDouble();
+                    System.out.println("Angiv dato for resultat: ");
+                    System.out.println("År: ");
+                    int år = scanner.nextInt();
+                    System.out.println("Måned: ");
+                    int måned = scanner.nextInt();
+                    System.out.println("Dag: ");
+                    int dag = scanner.nextInt();
+                    controller.redigerSvømmedisciplinOgResultater(navnRediger, svømmedisciplin, resultat, år, måned, dag);
+                    System.out.println("Ændringer gemt.");
+                    break;
+                case 2:
+                    break;
+            } } else {
+            System.out.println("Svømmedisciplin eksisterer ikke. Tjek eventuelle tastefejl.");
         }
     }
+
+}

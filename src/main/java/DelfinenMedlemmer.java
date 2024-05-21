@@ -1,3 +1,4 @@
+import java.awt.image.AreaAveragingScaleFilter;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -41,6 +42,20 @@ public class DelfinenMedlemmer {
                 searchMatch.add(medlem);
             }
         }
+    }
+
+    public  ArrayList<Medlem> redigerSvømmedisciplingOgResultat(String navn, String nyDisciplin, double nytResultat, int nytÅr, int nyMåned, int nyDag) {
+        for (Medlem medlem : medlemskollektion)  {
+            if (medlem.getNavn().toLowerCase().contains(navn.toLowerCase()) && medlem instanceof Konkurrencemedlem) {
+                ((Konkurrencemedlem) medlem).getSvømmedisciplinOgResultater().setSvømmedisciplin(nyDisciplin);
+                ((Konkurrencemedlem) medlem).getSvømmedisciplinOgResultater().setResultat(nytResultat);
+                ((Konkurrencemedlem) medlem).getSvømmedisciplinOgResultater().setÅr(nytÅr);
+                ((Konkurrencemedlem) medlem).getSvømmedisciplinOgResultater().setMåned(nyMåned);
+                ((Konkurrencemedlem) medlem).getSvømmedisciplinOgResultater().setDag(nyDag);
+            }
+        }
+        fileHandler.gemListeAfMedlemmer(medlemskollektion);
+        return medlemskollektion;
     }
 
     //Redigér i medlemslisten
