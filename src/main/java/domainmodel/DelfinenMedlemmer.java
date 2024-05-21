@@ -124,14 +124,6 @@ public class DelfinenMedlemmer {
         return listeAfKonkurrence;
     }
 
-   /* public List<domainmodel.Konkurrencemedlem> top5Bedste(){
-        sorterResultater();
-        List<domainmodel.Konkurrencemedlem> top5= new ArrayList<>();
-        for (int i = 0; i<5&& i<konkurrencemedlemsKollektion.size(); i++) {
-            top5.add(konkurrencemedlemsKollektion.get(i));
-        }
-        return top5;
-    }*/
     public ArrayList<Konkurrencemedlem> top5Bedste(){
         ArrayList<Konkurrencemedlem> crawl = new ArrayList<>();
         ArrayList<Konkurrencemedlem> rygCrawl = new ArrayList<>();
