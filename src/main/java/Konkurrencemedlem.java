@@ -9,11 +9,11 @@ public class Konkurrencemedlem extends Medlem {
     private SvømmedisciplinOgResultater svømmedisciplinOgResultater;
     LocalDate resultater = LocalDate.now();
 
-    public String getTræner(){
+    public String getTræner() {
         return træner;
     }
 
-    public String getHold(){
+    public String getHold() {
         return hold;
     }
 
@@ -22,14 +22,29 @@ public class Konkurrencemedlem extends Medlem {
     }
 
     public Konkurrencemedlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo, String træner, String hold, SvømmedisciplinOgResultater svømmedisciplinOgResultater) {
-        super (navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
+        super(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         this.træner = træner;
         this.hold = hold;
         this.svømmedisciplinOgResultater = svømmedisciplinOgResultater;
     }
 
     public String toString() {
-        return "Navn: "  + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold + "\n Resultater " + getSvømmedisciplinOgResultater();
+        return "Navn: " + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold + "\n Resultater " + getSvømmedisciplinOgResultater();
     }
 
+    public double getTid() {
+        return svømmedisciplinOgResultater.getResultat();
+    }
+
+    public void setResultat(double resultat) {
+        svømmedisciplinOgResultater.setResultat(resultat);
+    }
+    public String getDisciplin(){
+        return svømmedisciplinOgResultater.getSvømmedisciplin();
+    }
+    public void setDisciplin(String svømmeDisciplin){
+        svømmedisciplinOgResultater.setSvømmedisciplin(svømmeDisciplin);
+    }
 }
+
+

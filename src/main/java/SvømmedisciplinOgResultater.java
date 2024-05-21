@@ -51,7 +51,7 @@ public class SvømmedisciplinOgResultater {
         this.svømmedisciplin = svømmedisciplin;
     }
 
-    public void setResultat(int resultat){
+    public void setResultat(double resultat){
         this.resultat = resultat;
     }
 }

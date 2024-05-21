@@ -18,7 +18,7 @@ public class UserInterface {
                              4) Vis Kontingent
                              5) Medlemmer i restance
                              6) Sorter
-                             7) Indbetal
+                             7) Få top 5 svømmere for hver disciplin
                              8) Afslut Program
                 
                     """);
@@ -221,6 +221,8 @@ public class UserInterface {
                 SvømmedisciplinOgResultater svømmedisciplinOgResultater;
                 System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
                 scanner.nextLine();
+                String nyDisciplin = scanner.nextLine();
+                controller.redigérMedlem(navnRediger, redigeringsValg, nyDisciplin);
                 String svømmedisciplin = scanner.nextLine();
                 if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
                     System.out.println("1) Angiv/opdater resultat og dato for resultat i svømmedisciplin.");

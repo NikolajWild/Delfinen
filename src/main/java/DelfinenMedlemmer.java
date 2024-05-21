@@ -65,6 +65,17 @@ public class DelfinenMedlemmer {
                         medlem.setJuniorMedlemskab(nytKonkurrenceMotionistSvømmer);
                         break;
                     case 5:
+                        if (medlem instanceof Konkurrencemedlem) {
+                        Konkurrencemedlem konkurrenceMedlem = (Konkurrencemedlem) medlem;
+                        konkurrenceMedlem.setDisciplin((nyVærdi));
+
+                    }
+                    case 6:
+                        if (medlem instanceof Konkurrencemedlem) {
+                        Konkurrencemedlem konkurrenceMedlem = (Konkurrencemedlem) medlem;
+                        konkurrenceMedlem.setResultat(Double.parseDouble(nyVærdi));
+                    }
+
                 }
 
             }
@@ -72,6 +83,7 @@ public class DelfinenMedlemmer {
         fileHandler.gemListeAfMedlemmer(medlemskollektion);
         return medlemskollektion;
     }
+
 
 
     public void tilføjMedlem(Medlem medlem) {
@@ -89,14 +101,12 @@ public class DelfinenMedlemmer {
     }
 
     public ArrayList<String> listeAfKonkurrence() {
-
         ArrayList<String> listeAfKonkurrence = new ArrayList<>();
         for (Konkurrencemedlem konkurrencemedlem: konkurrencemedlemsKollektion) {
             listeAfKonkurrence.add(konkurrencemedlem.toString());
         }
         return listeAfKonkurrence;
     }
-
 
     public List<Konkurrencemedlem> top5Bedste(){
         sorterResultater();
@@ -106,6 +116,7 @@ public class DelfinenMedlemmer {
         }
         return top5;
     }
+
     public ArrayList<Konkurrencemedlem> sorterResultater() {
         konkurrencemedlemsKollektion.clear();
         for (Medlem medlem:medlemskollektion){
