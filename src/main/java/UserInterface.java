@@ -19,6 +19,7 @@ public class UserInterface {
                              5) Medlemmer i restance
                              6) Sorter
                              7) Indbetal
+                             8) Afslut Program
                 
                     """);
 
@@ -45,6 +46,9 @@ public class UserInterface {
                     break;
                 case 7:
                     top5Bedste();
+                    break;
+                case 8:
+                    System.exit(0);
                     break;
             }
 
