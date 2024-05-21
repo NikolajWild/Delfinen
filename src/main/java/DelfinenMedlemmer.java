@@ -11,10 +11,8 @@ public class DelfinenMedlemmer {
 
     public DelfinenMedlemmer(){
         this.fileHandler = new FileHandler();
-        this.medlemskollektion = fileHandler.loadMedlemdsData();
+        this.medlemskollektion = fileHandler.loadMedlemsData();
     }
-
-
 
     public ArrayList<Medlem> getMedlemskollektion() {
         return medlemskollektion;
