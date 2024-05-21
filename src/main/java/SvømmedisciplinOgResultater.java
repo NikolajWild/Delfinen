@@ -54,4 +54,16 @@ public class SvømmedisciplinOgResultater {
     public void setResultat(double resultat){
         this.resultat = resultat;
     }
+
+    public void setÅr(int år) {
+        this.år = år;
+    }
+
+    public void setMåned(int måned) {
+        this.måned = måned;
+    }
+
+    public void setDag(int dag) {
+        this.dag = dag;
+    }
 }

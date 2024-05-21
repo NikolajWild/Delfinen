@@ -2,6 +2,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -15,11 +16,12 @@ public class UserInterface {
                              1) Tilføj medlem
                              2) Søg på medlem
                              3) Rediger medlem
-                             4) Vis Kontingent
-                             5) Medlemmer i restance
-                             6) Sorter
-                             7) Få top 5 svømmere for hver disciplin
-                             8) Afslut Program
+                             4) Rediger disciplin og resultat for medlem
+                             5) Vis Kontingent
+                             6) Medlemmer i restance
+                             7) Sorter
+                             8) Indbetal
+                             9) Afslut program
                 
                     """);
 
@@ -36,18 +38,21 @@ public class UserInterface {
                     rediger();
                     break;
                 case 4:
-                    visKontingent();
+                    redigerSvømmedisciplinOgResultater();
                     break;
                 case 5:
-                    restance();
+                    visKontingent();
                     break;
                 case 6:
-                    sorterMedlemmer();
+                    restance();
                     break;
                 case 7:
-                    top5Bedste();
+                    sorterMedlemmer();
                     break;
                 case 8:
+                    top5Bedste();
+                    break;
+                case 9:
                     System.exit(0);
                     break;
             }
@@ -86,7 +91,7 @@ public class UserInterface {
     public void visKontingent() {
         double kontingent = controller.beregningAfKontingent();
         System.out.println("Dette er den indkomst, som svømmeklubben burde tjene i år, kunder" +
-                " i restance er ikke regnet med i dette beløb" + kontingent);
+                " i restance er ikke regnet med i dette beløb: " + kontingent);
     }
 
     public void dagiMåned() {
@@ -105,24 +110,34 @@ public class UserInterface {
         System.out.println("Angiv navn på medlem: ");
         scanner.nextLine();
         String navn = scanner.nextLine();
-        System.out.println("Angiv alder på medlem: ");
-        int alder = scanner.nextInt();
-        System.out.println("Angiv om medlem har et aktivt eller passivt medlemskab. Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
-        scanner.nextLine();
-        String inputAktivEllerPassiv = scanner.nextLine();
-        boolean aktivtMedlemskab = false;
-        if (inputAktivEllerPassiv.toLowerCase().contains("aktiv")) {
-            aktivtMedlemskab = true;
+        int alder = 0;
+        boolean validAge = false;
+        while (!validAge) {
+            System.out.println("Angiv alder på medlem: ");
+            try {
+                alder = scanner.nextInt();
+                validAge = true;
+            } catch (InputMismatchException e) {
+                System.out.println("Ugyldigt input.");
+                scanner.nextLine();
+            }
         }
-        boolean juniorMedlemskab = alder < 18;
-        System.out.println("Angiv om medlem er konkurrencesvømmer eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
-        String inputKonkurrenceEllerMotionist = scanner.nextLine();
-        boolean konkurrenceSvømmer = false;
-        if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
-            konkurrenceSvømmer = true;
-        }
-        double saldo = 2000;
-        Medlem medlem;
+            System.out.println("Angiv om medlem har et aktivt eller passivt medlemskab. Tast \"aktiv\" for aktivt medlemskab eller \"passiv\" for passivt medlemskab: ");
+            scanner.nextLine();
+            String inputAktivEllerPassiv = scanner.nextLine();
+            boolean aktivtMedlemskab = false;
+            if (inputAktivEllerPassiv.toLowerCase().contains("aktiv")) {
+                aktivtMedlemskab = true;
+            }
+            boolean juniorMedlemskab = alder < 18;
+            System.out.println("Angiv om medlem er konkurrencesvømmer eller motionistsvømmer. Tast \"konkurrence\" for konkurrencesvømmer eller \"motionist\" for motionistsvømmer: ");
+            String inputKonkurrenceEllerMotionist = scanner.nextLine();
+            boolean konkurrenceSvømmer = false;
+            if (inputKonkurrenceEllerMotionist.toLowerCase().contains("konkurrence")) {
+                konkurrenceSvømmer = true;
+            }
+            double saldo = 2000;
+            Medlem medlem;
 
         if (konkurrenceSvømmer) {
             String træner = alder < 18 ? "Peter Jacobsen" : "Maria Clausen";
@@ -176,7 +191,6 @@ public class UserInterface {
         System.out.println("2) Redigér alder");
         System.out.println("3) Redigér aktivt/passivt medlemskab");
         System.out.println("4) Redigér motionist-/konkurrencessvømmer");
-        System.out.println("5) Opdater svømmediscipliner og resultater");
         int redigeringsValg = scanner.nextInt();
         switch (redigeringsValg) {
             case 1:
@@ -218,37 +232,43 @@ public class UserInterface {
                 System.out.println();
                 System.out.println(medlemRed);
                 break;
-            case 5:
-                SvømmedisciplinOgResultater svømmedisciplinOgResultater;
-                System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
-                scanner.nextLine();
-                String nyDisciplin = scanner.nextLine();
-                controller.redigérMedlem(navnRediger, redigeringsValg, nyDisciplin);
-                String svømmedisciplin = scanner.nextLine();
-                if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
-                    System.out.println("1) Angiv/opdater resultat og dato for resultat i svømmedisciplin.");
-                    System.out.println("2) Afslut og gem ændringer");
-                    int resultatValg = scanner.nextInt();
-                    switch (resultatValg) {
-                        case 1:
-                            System.out.println("Angiv resultat i sekunder: ");
-                            double resultat = scanner.nextDouble();
-                            System.out.println("Angiv dato for resultat: ");
-                            System.out.println("År: ");
-                            int år = scanner.nextInt();
-                            System.out.println("Måned: ");
-                            int måned = scanner.nextInt();
-                            System.out.println("Dag: ");
-                            int dag = scanner.nextInt();
-                            SvømmedisciplinOgResultater resultater = new SvømmedisciplinOgResultater(svømmedisciplin, resultat, år, måned, dag);
-                            break;
-                        case 2:
-                            break;
-                    } } else {
-                    System.out.println("Svømmedisciplin eksisterer ikke. Tjek eventuelle tastefejl.");
-                }
         }
         System.out.println("Ændringer er gemt.");
-
     }
+    public void redigerSvømmedisciplinOgResultater(){
+        System.out.println("Søg efter navn på medlem nu ønsker at redigere: ");
+        scanner.nextLine();
+        String navnRediger = scanner.nextLine();
+        controller.søgMedlem(navnRediger);
+        Medlem medlemRed = controller.instanceDelfinenMedlemmer.searchMatch.get(0);
+        System.out.println(medlemRed);
+        System.out.println();
+        System.out.println("Angiv medlems svømmedisciplin (butterfly, crawl, rygcrawl, eller brystsvømning): ");
+        String nyDisciplin = scanner.nextLine();
+        String svømmedisciplin = nyDisciplin;
+        if (svømmedisciplin.toLowerCase().contains("butterfly") || svømmedisciplin.toLowerCase().contains("crawl") || svømmedisciplin.toLowerCase().contains("rygcrawl") || svømmedisciplin.toLowerCase().contains("brystsvømning")) {
+            System.out.println("1) Angiv/opdater resultat og dato for resultat i svømmedisciplin.");
+            System.out.println("2) Afslut og gem ændringer");
+            int resultatValg = scanner.nextInt();
+            switch (resultatValg) {
+                case 1:
+                    System.out.println("Angiv resultat i sekunder: ");
+                    double resultat = scanner.nextDouble();
+                    System.out.println("Angiv dato for resultat: ");
+                    System.out.println("År: ");
+                    int år = scanner.nextInt();
+                    System.out.println("Måned: ");
+                    int måned = scanner.nextInt();
+                    System.out.println("Dag: ");
+                    int dag = scanner.nextInt();
+                    controller.redigerSvømmedisciplinOgResultater(navnRediger, svømmedisciplin, resultat, år, måned, dag);
+                    System.out.println("Ændringer gemt.");
+                    break;
+                case 2:
+                    break;
+            } } else {
+            System.out.println("Svømmedisciplin eksisterer ikke. Tjek eventuelle tastefejl.");
+        }
+    }
+
 }

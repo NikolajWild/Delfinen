@@ -12,7 +12,7 @@ public class FileHandler {
     private final File file = new File("medlemmer.csv");
 
 
-    public ArrayList<Medlem> loadMedlemdsData() {
+    public ArrayList<Medlem> loadMedlemsData() {
         ArrayList<Medlem> medlemsData = new ArrayList();
         Scanner sc = null;
         try {

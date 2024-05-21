@@ -21,7 +21,10 @@ public class Controller {
         return instanceDelfinenMedlemmer.getKonkurrencemedlemsKollektion();
     }
 
-
+    public ArrayList<Medlem> redigerSvømmedisciplinOgResultater(String navn, String nyDisciplin, double nytResultat, int nytÅr, int nyMåned, int nyDag) {
+        instanceDelfinenMedlemmer.redigerSvømmedisciplingOgResultat(navn, nyDisciplin, nytResultat, nytÅr, nyMåned, nyDag);
+        return instanceDelfinenMedlemmer.getMedlemskollektion();
+    }
 
     public void getMåned() {
         instanceDelfinenMedlemmer.LocalDate();
