@@ -1,10 +1,12 @@
+package domainmodel;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class Controller {
 
-    DelfinenMedlemmer instanceDelfinenMedlemmer = new DelfinenMedlemmer();
+    public DelfinenMedlemmer instanceDelfinenMedlemmer = new DelfinenMedlemmer();
     Kontingent kontingent = new Kontingent(instanceDelfinenMedlemmer);
 
 

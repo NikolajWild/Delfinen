@@ -1,5 +1,4 @@
-import java.time.LocalDate;
-import java.util.List;
+package domainmodel;
 
 public class Medlem {
 
@@ -10,7 +9,7 @@ public class Medlem {
     private double saldo;
 
 
-Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo){
+public Medlem(String navn, int alder, boolean aktivtMedlemskab, boolean juniorMedlemskab, double saldo){
     this.navn = navn;
     this.alder = alder;
     this.aktivtMedlemskab = aktivtMedlemskab;
@@ -57,7 +56,7 @@ public void setNavn(String navn) {
     }
 
     public String toString() {
-        return "Navn: "  + navn + "\n" + "Alder: " + alder + "\n" + "Aktivt medlemskab: " + aktivtMedlemskab + "\n" + "Junior medlemskab: " + juniorMedlemskab;
+        return "Navn: "  + navn  + "Alder: " + alder+ "Aktivt medlemskab: " + aktivtMedlemskab  + "Junior medlemskab: " + juniorMedlemskab;
     }
 }
 

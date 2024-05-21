@@ -1,4 +1,7 @@
-import java.awt.image.AreaAveragingScaleFilter;
+package domainmodel;
+
+import datasource.FileHandler;
+
 import java.time.LocalDate;
 import java.util.*;
 
@@ -121,9 +124,9 @@ public class DelfinenMedlemmer {
         return listeAfKonkurrence;
     }
 
-   /* public List<Konkurrencemedlem> top5Bedste(){
+   /* public List<domainmodel.Konkurrencemedlem> top5Bedste(){
         sorterResultater();
-        List<Konkurrencemedlem> top5= new ArrayList<>();
+        List<domainmodel.Konkurrencemedlem> top5= new ArrayList<>();
         for (int i = 0; i<5&& i<konkurrencemedlemsKollektion.size(); i++) {
             top5.add(konkurrencemedlemsKollektion.get(i));
         }

@@ -1,6 +1,11 @@
-import java.time.LocalDate;
+package ui;
+
+import domainmodel.Controller;
+import domainmodel.Konkurrencemedlem;
+import domainmodel.Medlem;
+import domainmodel.SvømmedisciplinOgResultater;
+
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -173,7 +178,7 @@ public class UserInterface {
             medlem = new Medlem(navn, alder, aktivtMedlemskab, juniorMedlemskab, saldo);
         }
         controller.tilføjMedlem(medlem);
-        System.out.println("Medlem er blevet oprettet.");
+        System.out.println("domainmodel.Medlem er blevet oprettet.");
         System.out.println();
         System.out.println(medlem);
 

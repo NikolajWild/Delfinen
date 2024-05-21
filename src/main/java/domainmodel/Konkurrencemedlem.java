@@ -1,6 +1,6 @@
+package domainmodel;
+
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Konkurrencemedlem extends Medlem {
 
@@ -29,7 +29,7 @@ public class Konkurrencemedlem extends Medlem {
     }
 
     public String toString() {
-        return "Navn: " + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold + "\n Resultater " + getSvømmedisciplinOgResultater();
+        return "\nNavn: " + getNavn() + "\n" + "Alder: " + getAlder() + "\n" + "Aktivt medlemskab: " + getAktivtMedlemskab() + "\n" + "Junior medlemskab: " + getJuniorMedlemskab() + "\n" + "Træner: " + træner + "\n" + "Hold: " + hold + "\nResultater- " + getSvømmedisciplinOgResultater();
     }
 
     public double getTid() {

@@ -1,3 +1,5 @@
+package domainmodel;
+
 public class SvømmedisciplinOgResultater {
 
     private String svømmedisciplin;
@@ -16,7 +18,7 @@ public class SvømmedisciplinOgResultater {
 
     @Override
     public String toString() {
-        return "svømmedisciplin: " + svømmedisciplin+ " Resultat i sekunder: " + resultat +" Dato: " + dag + "/"+måned+"-"+år;
+        return "Svømmedisciplin: " + svømmedisciplin+ " Resultat i sekunder: " + resultat +" Dato: " + dag + "/"+måned+"-"+år;
 
     }
 

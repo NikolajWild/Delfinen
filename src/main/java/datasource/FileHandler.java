@@ -1,3 +1,9 @@
+package datasource;
+
+import domainmodel.Konkurrencemedlem;
+import domainmodel.Medlem;
+import domainmodel.SvømmedisciplinOgResultater;
+
 
 import java.io.File;
 import java.io.FileNotFoundException;
