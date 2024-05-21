@@ -57,6 +57,7 @@ public class UserInterface {
     public void top5Bedste(){
         controller.top5Bedste();
         System.out.println(controller.top5Bedste());
+
     }
 
     public void sorterMedlemmer(){

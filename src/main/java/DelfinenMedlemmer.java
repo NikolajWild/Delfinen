@@ -108,13 +108,50 @@ public class DelfinenMedlemmer {
         return listeAfKonkurrence;
     }
 
-    public List<Konkurrencemedlem> top5Bedste(){
+   /* public List<Konkurrencemedlem> top5Bedste(){
         sorterResultater();
         List<Konkurrencemedlem> top5= new ArrayList<>();
         for (int i = 0; i<5&& i<konkurrencemedlemsKollektion.size(); i++) {
             top5.add(konkurrencemedlemsKollektion.get(i));
         }
         return top5;
+    }*/
+    public ArrayList<Konkurrencemedlem> top5Bedste(){
+        ArrayList<Konkurrencemedlem> crawl = new ArrayList<>();
+        ArrayList<Konkurrencemedlem> rygCrawl = new ArrayList<>();
+        ArrayList<Konkurrencemedlem> butterfly = new ArrayList<>();
+        ArrayList<Konkurrencemedlem> brystsvømning = new ArrayList<>();
+
+        sorterResultater();
+        ArrayList<Konkurrencemedlem> top5AlleDiscipliner = new ArrayList<>();
+        for (Konkurrencemedlem konkurrencemedlem : konkurrencemedlemsKollektion) {
+            if (konkurrencemedlem.getDisciplin().toLowerCase().equals("crawl")) {
+                crawl.add(konkurrencemedlem);
+                //return top5Crawl;
+            } else if (konkurrencemedlem.getDisciplin().toLowerCase().equals("rygcrawl")) {
+                rygCrawl.add(konkurrencemedlem);
+                // return top5RygCrawl;
+            } else if (konkurrencemedlem.getDisciplin().toLowerCase().equals("butterfly")) {
+                butterfly.add(konkurrencemedlem);
+                // return top5Butterfly;
+            } else if (konkurrencemedlem.getDisciplin().toLowerCase().equals("brystsvømning")) {
+                brystsvømning.add(konkurrencemedlem);
+                // return top5Brystsvømning;
+            }
+        }
+            for (int i = 0; i<5&& i<crawl.size(); i++) {
+                top5AlleDiscipliner.add(crawl.get(i));
+            }
+            for (int i = 0; i<5&& i<rygCrawl.size(); i++) {
+                top5AlleDiscipliner.add(rygCrawl.get(i));
+            }
+            for (int i = 0; i<5&& i<butterfly.size(); i++) {
+                top5AlleDiscipliner.add(butterfly.get(i));
+            }
+            for (int i = 0; i<5&& i<brystsvømning.size(); i++) {
+                top5AlleDiscipliner.add(brystsvømning.get(i));
+            }
+        return top5AlleDiscipliner;
     }
 
     public ArrayList<Konkurrencemedlem> sorterResultater() {
