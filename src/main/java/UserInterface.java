@@ -174,7 +174,7 @@ public class UserInterface {
         System.out.println("1) Redigér navn");
         System.out.println("2) Redigér alder");
         System.out.println("3) Redigér aktivt/passivt medlemskab");
-        System.out.println("4) Redigér motionist-/konkurrencessvømmer");
+        System.out.println("4) Redigér motionist-/konkurrencesvømmer");
         System.out.println("5) Opdater svømmediscipliner og resultater");
         int redigeringsValg = scanner.nextInt();
         switch (redigeringsValg) {
