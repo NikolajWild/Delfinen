@@ -20,7 +20,7 @@ public class UserInterface {
                              5) Vis Kontingent
                              6) Medlemmer i restance
                              7) Sorter
-                             8) Indbetal
+                             8) Top 5
                              9) Afslut program
                 
                     """);
