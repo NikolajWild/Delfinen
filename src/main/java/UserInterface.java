@@ -21,6 +21,7 @@ public class UserInterface {
                              6) Medlemmer i restance
                              7) Sorter
                              8) Indbetal
+                             9) Afslut program
                 
                     """);
 
