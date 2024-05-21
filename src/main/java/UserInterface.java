@@ -89,7 +89,7 @@ public class UserInterface {
     public void visKontingent() {
         double kontingent = controller.beregningAfKontingent();
         System.out.println("Dette er den indkomst, som svømmeklubben burde tjene i år, kunder" +
-                " i restance er ikke regnet med i dette beløb" + kontingent);
+                " i restance er ikke regnet med i dette beløb: " + kontingent);
     }
 
     public void dagiMåned() {
